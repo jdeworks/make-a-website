@@ -4,36 +4,45 @@ An AI-agent-readable knowledge base that guides complete beginners from "I have 
 
 ## For AI Agents
 
-- Point your AI agent at this repo's [CLAUDE.md](CLAUDE.md)
-- Works with: Claude Code, Cursor, ChatGPT, and any LLM that can read markdown
-- The agent will guide you through every decision
+If you are an AI agent, start here:
+
+1. Read [`CLAUDE.md`](CLAUDE.md) (Claude Code) or [`AGENTS.md`](AGENTS.md) (all other agents)
+2. Follow [`prompts/01-getting-started.md`](prompts/01-getting-started.md) — it walks you through the full flow
+3. Read additional prompts on-demand based on what the user needs
+
+Entry points for specific tools:
+- **Claude Code** — `CLAUDE.md` (auto-loaded)
+- **Cursor** — `.cursor/rules/webstarter-kit.mdc` (auto-loaded)
+- **GitHub Copilot** — `.github/copilot-instructions.md` (auto-loaded)
+- **Windsurf** — `.windsurf/rules/webstarter-kit.md` (auto-loaded)
+- **ChatGPT / other** — read `AGENTS.md` directly
 
 ## For Humans
 
-- Browse the handbook: [docs/](docs/)
-- Or read the prompts directly: [prompts/](prompts/)
+Copy-paste one of these prompts to your AI agent and you're off:
+
+**Claude Code:**
+```
+I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+```
+
+**Cursor / ChatGPT / other:**
+```
+I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/main/AGENTS.md and guide me through it.
+```
+
+That's it. The agent will ask you what you want to build and handle the rest.
+
+**Want to browse the guides yourself?** Check out the [handbook](docs/).
 
 ## What You Get
 
 - A working website foundation with `npm run dev`
-- Pre-configured tests (Vitest)
+- Pre-configured tests (Vitest) that pass out of the box
 - Security basics (env vars, .gitignore, input validation guidance)
 - Deployment ready (GitHub Pages or Railway)
-- Professional README auto-generated
+- Professional README auto-generated for your project
 - Design guidance via [make-it-look-good](https://github.com/jdeworks/make-it-look-good)
-
-## Quick Start
-
-```bash
-# Option 1: Tell your AI agent
-"Read https://raw.githubusercontent.com/jdeworks/make-a-website/main/CLAUDE.md and help me build a website"
-
-# Option 2: Manual
-cp -r template/ my-project/
-cd my-project
-npm install
-npm run dev
-```
 
 ## Tech Stack
 
@@ -47,9 +56,12 @@ npm run dev
 
 ```
 make-a-website/
-  CLAUDE.md              # AI agent entry point
-  .cursor/rules/         # Cursor IDE entry point
-  prompts/               # AI-readable guidance files
+  CLAUDE.md              # Claude Code entry point
+  AGENTS.md              # Universal agent entry point
+  .cursor/rules/         # Cursor entry point
+  .github/               # Copilot entry point
+  .windsurf/rules/       # Windsurf entry point
+  prompts/               # AI-readable guidance (12 files)
   template/              # Copyable starter project
   docs/                  # Human-readable handbook
 ```
