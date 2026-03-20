@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebStarter Kit — Build Your Website with AI</title>
+  <meta name="description" content="A guided foundation for building websites. Point your AI agent here, describe your idea, get a working site.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Nav -->
+  <nav class="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-semibold text-gray-900">WebStarter Kit</a>
+      <div class="flex gap-6 text-sm">
+        <a href="handbook.html" class="text-gray-600 hover:text-gray-900">Handbook</a>
+        <a href="https://github.com/yourusername/make-a-website" class="text-gray-600 hover:text-gray-900">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <h1 class="text-5xl sm:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+      WebStarter Kit
+    </h1>
+    <p class="mt-6 text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      A guided foundation for building websites. Tell your AI agent what you want to build, and it walks you through every step — from first idea to live deployment.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#get-started" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium text-base hover:bg-blue-700 transition-colors">
+        Get Started
+      </a>
+      <a href="handbook.html" class="inline-block bg-gray-100 text-gray-800 px-8 py-3 rounded-lg font-medium text-base hover:bg-gray-200 transition-colors">
+        Read the Handbook
+      </a>
+    </div>
+  </header>
+
+  <!-- How it works -->
+  <section class="bg-gray-50 border-y border-gray-200">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <h2 class="text-3xl font-bold text-center mb-14">How It Works</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-5">1</div>
+          <h3 class="text-lg font-semibold mb-2">Point your AI agent here</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Give your AI agent (Claude Code, Cursor, Copilot) the link to the CLAUDE.md file. It reads the instructions and knows what to do.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-5">2</div>
+          <h3 class="text-lg font-semibold mb-2">Describe your idea</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Tell the agent what you want to build. A portfolio? A blog? A small business site? It will ask the right questions.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-5">3</div>
+          <h3 class="text-lg font-semibold mb-2">Get a working site</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            The agent builds your project step by step — with tests, security basics, and deployment instructions baked in.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-14">What You Get</h2>
+    <div class="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-3xl mx-auto">
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Tested Code</h3>
+          <p class="text-gray-600 text-sm">Vitest is set up from the start. Your code has tests from day one.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Security Basics</h3>
+          <p class="text-gray-600 text-sm">Environment variables, input validation, and dependency auditing covered.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Professional README</h3>
+          <p class="text-gray-600 text-sm">A clear README is generated for your project, ready to share.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Deployment Ready</h3>
+          <p class="text-gray-600 text-sm">GitHub Pages for static sites, Railway for server apps. CI/CD included.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Good Design</h3>
+          <p class="text-gray-600 text-sm">Tailwind CSS with design guidance so your site looks polished, not generic.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="flex-shrink-0 w-8 h-8 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-sm font-bold mt-0.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-1">Framework Flexibility</h3>
+          <p class="text-gray-600 text-sm">Start vanilla or pick React, Vue, or Astro. Upgrade later if you want.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Started -->
+  <section id="get-started" class="bg-gray-50 border-y border-gray-200">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <h2 class="text-3xl font-bold text-center mb-10">Get Started</h2>
+
+      <div class="bg-white rounded-xl border border-gray-200 p-8 space-y-6">
+        <div>
+          <h3 class="font-semibold text-lg mb-3">Option 1: Clone the repo</h3>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm overflow-x-auto"><code>git clone https://github.com/yourusername/make-a-website.git
+cd make-a-website</code></pre>
+          <p class="mt-3 text-gray-600 text-sm">Then open it in your editor with an AI agent (Claude Code, Cursor, etc.) and say: <em>"Help me build a website."</em></p>
+        </div>
+
+        <hr class="border-gray-200">
+
+        <div>
+          <h3 class="font-semibold text-lg mb-3">Option 2: Point your agent to CLAUDE.md</h3>
+          <p class="text-gray-600 text-sm mb-3">Copy this URL and paste it into your AI agent's chat:</p>
+          <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm overflow-x-auto"><code>https://raw.githubusercontent.com/yourusername/make-a-website/main/CLAUDE.md</code></pre>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="font-semibold text-lg mb-4 text-center">Prompt Files Reference</h3>
+        <div class="bg-white rounded-xl border border-gray-200 divide-y divide-gray-100 text-sm">
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/00-prerequisites.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">00-prerequisites</span>
+            <span class="text-gray-500">Check/install Node.js, Git, editor</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/01-getting-started.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">01-getting-started</span>
+            <span class="text-gray-500">Main workflow: idea to project</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/02-framework-choice.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">02-framework-choice</span>
+            <span class="text-gray-500">Vanilla vs React vs Vue vs Astro</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/03-project-structure.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">03-project-structure</span>
+            <span class="text-gray-500">How to organize files</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/04-testing.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">04-testing</span>
+            <span class="text-gray-500">Vitest setup and writing tests</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/05-security.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">05-security</span>
+            <span class="text-gray-500">Security essentials checklist</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/06-design.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">06-design</span>
+            <span class="text-gray-500">Tailwind CSS + design guidance</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/07-hosting-static.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">07-hosting-static</span>
+            <span class="text-gray-500">Deploy to GitHub Pages</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/08-hosting-server.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">08-hosting-server</span>
+            <span class="text-gray-500">Deploy Express + SQLite to Railway</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/09-react-upgrade.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">09-react-upgrade</span>
+            <span class="text-gray-500">Upgrade vanilla to React</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/10-cicd.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">10-cicd</span>
+            <span class="text-gray-500">GitHub Actions CI/CD</span>
+          </a>
+          <a href="https://github.com/yourusername/make-a-website/blob/main/prompts/11-readme-template.md" class="flex justify-between items-center px-5 py-3 hover:bg-gray-50 transition-colors">
+            <span class="font-medium text-gray-900">11-readme-template</span>
+            <span class="text-gray-500">README template for your project</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="max-w-5xl mx-auto px-6 py-10 text-center text-sm text-gray-500">
+    <p>
+      WebStarter Kit is open source.
+      <a href="https://github.com/yourusername/make-a-website" class="text-blue-600 hover:underline">View on GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern starter template built with Vite and Tailwind CSS." />
+    <title>My Website</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-primary">MyWebsite</a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="nav-toggle"
+          class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Navigation links -->
+        <ul id="nav-menu" class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+          <li><a href="#features" class="hover:text-primary transition-colors">Features</a></li>
+          <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+          <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile menu -->
+      <ul id="mobile-menu" class="hidden flex-col gap-2 px-4 pb-4 text-sm font-medium text-gray-600 md:hidden">
+        <li><a href="#features" class="block py-2 hover:text-primary transition-colors">Features</a></li>
+        <li><a href="#about" class="block py-2 hover:text-primary transition-colors">About</a></li>
+        <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
+      </ul>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <!-- Hero section -->
+      <section class="max-w-6xl mx-auto px-4 py-20 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+          Build something great
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          This is your starter template — customize everything! It comes with Vite,
+          Tailwind CSS v4, and Vitest ready to go.
+        </p>
+        <a
+          href="#features"
+          class="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors"
+        >
+          Get started
+        </a>
+      </section>
+
+      <!-- Features section -->
+      <section id="features" class="bg-gray-50 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Features</h2>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Card 1 -->
+            <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Lightning fast</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Powered by Vite for instant server start and blazing-fast hot module replacement during development.
+              </p>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Modern styling</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Tailwind CSS v4 with custom theme tokens. Utility-first styling that keeps your CSS lean and maintainable.
+              </p>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Tested from day one</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Vitest is pre-configured with DOM testing support. Write unit and integration tests with zero setup.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 py-8">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+        <p>&copy; 2026 My Website. Built with Vite &amp; Tailwind CSS.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

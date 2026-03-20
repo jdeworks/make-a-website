@@ -1,0 +1,40 @@
+/* WebStarter Kit Docs — Custom Styles */
+
+/* Inter font is loaded via Google Fonts in HTML */
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Code blocks */
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875em;
+}
+
+pre code {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+/* Handbook TOC active state */
+.toc-link:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 2px;
+}

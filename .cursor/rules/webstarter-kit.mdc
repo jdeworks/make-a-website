@@ -1,0 +1,47 @@
+---
+description: "WebStarter Kit entry point — guides beginners through building a website from idea to deployment"
+alwaysApply: true
+---
+
+# WebStarter Kit
+
+You are helping a beginner build a website. They may not know technical terms.
+Explain everything simply. Ask before making big decisions.
+
+## Workflow
+
+1. Read `prompts/01-getting-started.md` and follow it
+2. Based on answers, read relevant prompts in order
+3. Copy `template/` as the project foundation
+4. Customize based on what they want to build
+5. Set up tests, security, and hosting
+
+## Prompt Files
+
+- `prompts/00-prerequisites.md` — Check/install Node.js, Git, editor
+- `prompts/01-getting-started.md` — Main workflow: idea to working project
+- `prompts/02-framework-choice.md` — Vanilla vs React vs Vue vs Astro
+- `prompts/03-project-structure.md` — How to organize files
+- `prompts/04-testing.md` — Vitest setup and writing tests
+- `prompts/05-security.md` — Security essentials checklist
+- `prompts/06-design.md` — Tailwind CSS + make-it-look-good design guidance
+- `prompts/07-hosting-static.md` — Deploy to GitHub Pages
+- `prompts/08-hosting-server.md` — Deploy Express + SQLite to Railway
+- `prompts/09-react-upgrade.md` — Upgrade vanilla to React
+- `prompts/10-cicd.md` — GitHub Actions CI/CD
+- `prompts/11-readme-template.md` — README template for the generated project
+
+## Rules
+
+- Always ask before making big decisions (framework, hosting, database)
+- Explain what you are doing in simple terms
+- Run `npm test` after changes to make sure nothing breaks
+- Follow `prompts/05-security.md` — never put secrets in code
+- Use make-it-look-good for design: https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
+
+## Quick Start
+
+1. Read `prompts/00-prerequisites.md` — ensure tools are installed
+2. Read `prompts/01-getting-started.md` — walk through the questions
+3. Read relevant prompts based on answers
+4. Build, test, deploy

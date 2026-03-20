@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handbook — WebStarter Kit</title>
+  <meta name="description" content="A complete guide to building your website, from prerequisites to deployment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Nav -->
+  <nav class="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-semibold text-gray-900">WebStarter Kit</a>
+      <div class="flex gap-6 text-sm">
+        <a href="handbook.html" class="text-blue-600 font-medium">Handbook</a>
+        <a href="https://github.com/yourusername/make-a-website" class="text-gray-600 hover:text-gray-900">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-4xl mx-auto px-6 py-12">
+
+    <!-- Header -->
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold tracking-tight">Handbook</h1>
+      <p class="mt-3 text-lg text-gray-600">Everything you need to know, from installing tools to deploying your site.</p>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="bg-gray-50 rounded-xl border border-gray-200 p-6 mb-16" aria-label="Table of contents">
+      <h2 class="font-semibold text-sm uppercase tracking-wide text-gray-500 mb-4">Contents</h2>
+      <ol class="space-y-2 text-sm">
+        <li><a href="#prerequisites" class="toc-link text-gray-700 hover:text-blue-600">1. Prerequisites</a></li>
+        <li><a href="#getting-started" class="toc-link text-gray-700 hover:text-blue-600">2. Getting Started</a></li>
+        <li><a href="#framework-choice" class="toc-link text-gray-700 hover:text-blue-600">3. Choosing a Framework</a></li>
+        <li><a href="#project-structure" class="toc-link text-gray-700 hover:text-blue-600">4. Project Structure</a></li>
+        <li><a href="#testing" class="toc-link text-gray-700 hover:text-blue-600">5. Testing</a></li>
+        <li><a href="#security" class="toc-link text-gray-700 hover:text-blue-600">6. Security</a></li>
+        <li><a href="#design" class="toc-link text-gray-700 hover:text-blue-600">7. Design</a></li>
+        <li><a href="#hosting-static" class="toc-link text-gray-700 hover:text-blue-600">8. Hosting a Static Site</a></li>
+        <li><a href="#hosting-server" class="toc-link text-gray-700 hover:text-blue-600">9. Hosting a Server App</a></li>
+        <li><a href="#react-upgrade" class="toc-link text-gray-700 hover:text-blue-600">10. Upgrading to React</a></li>
+        <li><a href="#cicd" class="toc-link text-gray-700 hover:text-blue-600">11. CI/CD with GitHub Actions</a></li>
+      </ol>
+    </nav>
+
+    <!-- Sections -->
+    <article class="space-y-16">
+
+      <!-- Prerequisites -->
+      <section id="prerequisites">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">1. Prerequisites</h2>
+        <p class="text-gray-700 mb-4">Before you start, make sure you have these tools installed on your computer:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+          <li><strong>Node.js</strong> (version 18 or newer) — the runtime that powers your project. Download it from <a href="https://nodejs.org" class="text-blue-600 hover:underline">nodejs.org</a>.</li>
+          <li><strong>Git</strong> — version control for your code. It often comes pre-installed on Mac and Linux. Windows users can get it from <a href="https://git-scm.com" class="text-blue-600 hover:underline">git-scm.com</a>.</li>
+          <li><strong>A code editor</strong> — VS Code is recommended. It is free, works on all platforms, and has great extensions for web development.</li>
+        </ul>
+        <p class="text-gray-700 mt-4">To check if Node.js and Git are installed, open a terminal and run:</p>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm mt-3 overflow-x-auto"><code>node --version
+git --version</code></pre>
+        <p class="text-gray-600 text-sm mt-3">You should see version numbers printed. If you get "command not found," install the missing tool first.</p>
+      </section>
+
+      <!-- Getting Started -->
+      <section id="getting-started">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">2. Getting Started</h2>
+        <p class="text-gray-700 mb-4">The WebStarter Kit works by asking you a few questions about what you want to build, then scaffolding a project for you.</p>
+        <p class="text-gray-700 mb-4">Here is the general flow:</p>
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-2">
+          <li><strong>Describe your idea.</strong> What kind of website? Who is it for? A portfolio, a blog, a small business page, a web app?</li>
+          <li><strong>Pick a framework.</strong> Start with plain HTML/CSS/JS (vanilla) if you are new. You can upgrade to React or Vue later.</li>
+          <li><strong>Build it.</strong> The template gives you a starting point. Customize the design, add your content, build your features.</li>
+          <li><strong>Test it.</strong> Write tests to make sure things work. Run them before every big change.</li>
+          <li><strong>Deploy it.</strong> Put it on the internet. Static sites go to GitHub Pages. Server apps go to Railway.</li>
+        </ol>
+        <p class="text-gray-700 mt-4">If you are using an AI agent, it will walk you through each step interactively.</p>
+      </section>
+
+      <!-- Framework Choice -->
+      <section id="framework-choice">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">3. Choosing a Framework</h2>
+        <p class="text-gray-700 mb-4">You have several options. Here is a quick comparison:</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="text-left px-4 py-3 font-semibold">Option</th>
+                <th class="text-left px-4 py-3 font-semibold">Best For</th>
+                <th class="text-left px-4 py-3 font-semibold">Complexity</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="px-4 py-3 font-medium">Vanilla (HTML/CSS/JS)</td>
+                <td class="px-4 py-3 text-gray-600">Simple sites, learning the basics</td>
+                <td class="px-4 py-3 text-gray-600">Low</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">React</td>
+                <td class="px-4 py-3 text-gray-600">Interactive apps, component-heavy UIs</td>
+                <td class="px-4 py-3 text-gray-600">Medium</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">Vue</td>
+                <td class="px-4 py-3 text-gray-600">Similar to React, gentler learning curve</td>
+                <td class="px-4 py-3 text-gray-600">Medium</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">Astro</td>
+                <td class="px-4 py-3 text-gray-600">Content-heavy sites, blogs, docs</td>
+                <td class="px-4 py-3 text-gray-600">Medium</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-gray-700 mt-4"><strong>Recommendation:</strong> if you are unsure, start vanilla. You can always upgrade to React later using the upgrade guide.</p>
+      </section>
+
+      <!-- Project Structure -->
+      <section id="project-structure">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">4. Project Structure</h2>
+        <p class="text-gray-700 mb-4">A well-organized project is easier to work on. Here is a typical layout:</p>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm overflow-x-auto"><code>my-website/
+  public/           # Static files (images, favicon)
+  src/              # Your source code
+    components/     # Reusable UI pieces
+    pages/          # Page files
+    styles/         # CSS files
+    utils/          # Helper functions
+  tests/            # Test files
+  package.json      # Dependencies and scripts
+  README.md         # Project documentation</code></pre>
+        <p class="text-gray-700 mt-4">Keep related files together. Name files clearly. Do not overthink it at the start — you can reorganize later.</p>
+      </section>
+
+      <!-- Testing -->
+      <section id="testing">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">5. Testing</h2>
+        <p class="text-gray-700 mb-4">Tests catch bugs before your users do. The WebStarter Kit uses <strong>Vitest</strong>, a fast and modern test runner.</p>
+        <p class="text-gray-700 mb-3">To run your tests:</p>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm overflow-x-auto"><code>npm test</code></pre>
+        <p class="text-gray-700 mt-4 mb-3">A simple test looks like this:</p>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm overflow-x-auto"><code>import { describe, it, expect } from 'vitest';
+import { add } from '../src/utils/math.js';
+
+describe('add', () => {
+  it('adds two numbers', () => {
+    expect(add(2, 3)).toBe(5);
+  });
+});</code></pre>
+        <p class="text-gray-700 mt-4"><strong>Rule of thumb:</strong> write a test for every function that takes input and returns output. Run tests after every significant change.</p>
+      </section>
+
+      <!-- Security -->
+      <section id="security">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">6. Security</h2>
+        <p class="text-gray-700 mb-4">Even simple websites need basic security. Follow these essentials:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+          <li><strong>Never put secrets in your code.</strong> API keys, passwords, and tokens go in environment variables (a <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">.env</code> file), not in your source code.</li>
+          <li><strong>Add <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">.env</code> to <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">.gitignore</code>.</strong> This prevents accidentally uploading secrets to GitHub.</li>
+          <li><strong>Validate user input.</strong> If your site has forms, check that the data looks right before using it.</li>
+          <li><strong>Keep dependencies updated.</strong> Run <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">npm audit</code> regularly to check for known vulnerabilities.</li>
+          <li><strong>Use HTTPS.</strong> GitHub Pages and Railway both provide this automatically.</li>
+        </ul>
+      </section>
+
+      <!-- Design -->
+      <section id="design">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">7. Design</h2>
+        <p class="text-gray-700 mb-4">The WebStarter Kit uses <strong>Tailwind CSS</strong> for styling. Tailwind gives you utility classes that you apply directly in your HTML.</p>
+        <p class="text-gray-700 mb-3">For example:</p>
+        <pre class="bg-gray-900 text-gray-100 rounded-lg p-4 text-sm overflow-x-auto"><code>&lt;h1 class="text-3xl font-bold text-gray-900"&gt;Hello&lt;/h1&gt;
+&lt;p class="mt-2 text-gray-600 leading-relaxed"&gt;Welcome to my site.&lt;/p&gt;</code></pre>
+        <p class="text-gray-700 mt-4 mb-3">Key design principles:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+          <li><strong>Whitespace is your friend.</strong> Give elements room to breathe. Cramped layouts feel amateur.</li>
+          <li><strong>Limit your color palette.</strong> Pick one primary color and use gray for everything else.</li>
+          <li><strong>Use good typography.</strong> Inter or system fonts work great. Set comfortable line heights.</li>
+          <li><strong>Be consistent.</strong> Use the same spacing, colors, and font sizes throughout.</li>
+          <li><strong>Mobile first.</strong> Design for small screens first, then add styles for larger ones.</li>
+        </ul>
+        <p class="text-gray-700 mt-4">For more detailed design guidance, reference the <a href="https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md" class="text-blue-600 hover:underline">make-it-look-good</a> style guide.</p>
+      </section>
+
+      <!-- Hosting Static -->
+      <section id="hosting-static">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">8. Hosting a Static Site</h2>
+        <p class="text-gray-700 mb-4">If your site is just HTML, CSS, and JavaScript (no server), GitHub Pages is the easiest way to put it online. It is free.</p>
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-2">
+          <li>Push your code to a GitHub repository.</li>
+          <li>Go to <strong>Settings &gt; Pages</strong> in your repo.</li>
+          <li>Set the source to your main branch (and the <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">/docs</code> folder or root, depending on your setup).</li>
+          <li>Your site will be live at <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">https://yourusername.github.io/your-repo</code>.</li>
+        </ol>
+        <p class="text-gray-700 mt-4">Every time you push changes, the site updates automatically.</p>
+      </section>
+
+      <!-- Hosting Server -->
+      <section id="hosting-server">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">9. Hosting a Server App</h2>
+        <p class="text-gray-700 mb-4">If your project has a backend (Express, API routes, a database), you need a server host. <strong>Railway</strong> is a good choice for small projects.</p>
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-2">
+          <li>Sign up at <a href="https://railway.app" class="text-blue-600 hover:underline">railway.app</a> using your GitHub account.</li>
+          <li>Create a new project and connect your GitHub repo.</li>
+          <li>Railway detects Node.js automatically and deploys your app.</li>
+          <li>Add environment variables in the Railway dashboard (never in code).</li>
+        </ol>
+        <p class="text-gray-700 mt-4">For databases, SQLite works well for small apps. Railway also supports PostgreSQL if you need something larger.</p>
+      </section>
+
+      <!-- React Upgrade -->
+      <section id="react-upgrade">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">10. Upgrading to React</h2>
+        <p class="text-gray-700 mb-4">Started with vanilla HTML/JS and want more power? You can migrate to React without starting over.</p>
+        <p class="text-gray-700 mb-3">The general approach:</p>
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-2">
+          <li>Install React and a build tool (Vite is recommended).</li>
+          <li>Convert your HTML pages into React components.</li>
+          <li>Move your logic into React hooks and state.</li>
+          <li>Update your tests to use React Testing Library.</li>
+        </ol>
+        <p class="text-gray-700 mt-4">The AI agent can handle this migration for you — just ask it to upgrade your project to React.</p>
+      </section>
+
+      <!-- CI/CD -->
+      <section id="cicd">
+        <h2 class="text-2xl font-bold mb-4 pb-2 border-b border-gray-200">11. CI/CD with GitHub Actions</h2>
+        <p class="text-gray-700 mb-4">CI/CD means your tests run automatically every time you push code. If tests fail, you know before anything breaks in production.</p>
+        <p class="text-gray-700 mb-3">GitHub Actions handles this for free. The WebStarter Kit includes a workflow that:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-2">
+          <li>Runs <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">npm test</code> on every push and pull request.</li>
+          <li>Checks your code with a linter.</li>
+          <li>Deploys automatically when tests pass on the main branch.</li>
+        </ul>
+        <p class="text-gray-700 mt-4">You do not need to set this up manually — the AI agent configures it for you as part of the project setup.</p>
+      </section>
+
+    </article>
+
+    <!-- Back to top -->
+    <div class="mt-16 pt-8 border-t border-gray-200 text-center">
+      <a href="#" class="text-sm text-gray-500 hover:text-gray-700">Back to top</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="max-w-4xl mx-auto px-6 py-10 text-center text-sm text-gray-500">
+    <p>
+      WebStarter Kit is open source.
+      <a href="https://github.com/yourusername/make-a-website" class="text-blue-600 hover:underline">View on GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>
