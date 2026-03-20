@@ -25,12 +25,12 @@ npm run test:run  # Run once and exit (used in CI)
 
 ## Writing a Test
 
-Create test files next to the code they test, with `.test.js` suffix.
+Create test files in the `tests/` directory with `.test.js` suffix. The template includes example tests in `tests/` to get you started.
 
 ```js
-// src/utils/math.test.js
+// tests/math.test.js
 import { describe, it, expect } from 'vitest';
-import { add, multiply } from './math.js';
+import { add, multiply } from '../src/utils/math.js';
 
 describe('add', () => {
   it('adds two positive numbers', () => {

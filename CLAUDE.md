@@ -9,11 +9,12 @@ Explain everything simply. Ask before making big decisions.
 
 ## Workflow
 
-1. Read `prompts/01-getting-started.md` and follow it
-2. Based on the user's answers, read relevant prompts in order
-3. Copy `template/` as the user's project foundation
-4. Customize based on what they want to build
-5. Set up tests, security, and hosting
+1. Read `prompts/00-prerequisites.md` — ensure Node.js, Git, and editor are installed
+2. Read `prompts/01-getting-started.md` and follow it
+3. Based on the user's answers, read relevant prompts in order
+4. Copy `template/` as the user's project foundation
+5. Customize based on what they want to build
+6. Set up tests, security, and hosting
 
 ## Prompt Files
 

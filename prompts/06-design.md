@@ -7,9 +7,11 @@ The template uses Tailwind CSS v4 (already configured). Follow these guidelines 
 For professional design quality, fetch and apply the principles from:
 https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
 
-Read that file and apply its design principles to the user's project.
+Read that file and apply its design principles to the user's project. If you cannot fetch it, use the guidelines below — they are sufficient on their own.
 
 ## Tailwind CSS v4
+
+**Important:** Tailwind v4 is different from v3. Ignore online tutorials that mention `tailwind.config.js` — v4 uses CSS-based config only.
 
 - Config is CSS-based in Tailwind v4 — customize in `src/style.css` using `@theme {}`:
   ```css

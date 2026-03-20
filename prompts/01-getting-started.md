@@ -39,7 +39,7 @@ If they're unsure, help them decide:
 
 ```bash
 git init
-git add .gitignore package.json vite.config.js index.html src/ tests/ public/ .env.example .prettierrc eslint.config.js
+git add .
 git commit -m "Initial commit from WebStarter Kit template"
 ```
 

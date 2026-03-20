@@ -5,7 +5,7 @@ Check and install everything needed before starting. Walk the user through each 
 ## Node.js 20 LTS
 
 1. Ask the user to run: `node -v`
-2. If output starts with `v20` or `v22` — they're good
+2. If output starts with `v20` or higher — they're good
 3. If command not found or version too old — install from https://nodejs.org/ (pick the LTS version)
 4. After install, have them close and reopen their terminal, then run `node -v` again
 
@@ -16,7 +16,7 @@ Check and install everything needed before starting. Walk the user through each 
 
 ## Git
 
-1. Ask the user to run: `git -v`
+1. Ask the user to run: `git --version`
 2. If output shows `git version 2.x` — they're good
 3. If command not found — install from https://git-scm.com/
 4. After install, configure identity:
@@ -42,9 +42,9 @@ Check and install everything needed before starting. Walk the user through each 
 Run these commands and confirm output:
 
 ```bash
-node -v    # Should print v20.x.x or v22.x.x
+node -v    # Should print v20.x.x or higher
 npm -v     # Should print 10.x.x+
-git -v     # Should print git version 2.x.x
+git --version     # Should print git version 2.x.x
 ```
 
 If all three work, the user is ready. Proceed to `prompts/01-getting-started.md`.

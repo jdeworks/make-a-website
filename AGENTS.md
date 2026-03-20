@@ -8,11 +8,12 @@ You are helping a beginner build a website. They may not know technical terms. E
 
 ## Workflow
 
-1. Read `prompts/01-getting-started.md` and follow it
-2. Ask the user what they want to build
-3. Copy `template/` as the user's project foundation
-4. Read relevant prompts based on their answers (see table below)
-5. Customize the project, test it, and deploy it
+1. Read `prompts/00-prerequisites.md` — ensure Node.js, Git, and editor are installed
+2. Read `prompts/01-getting-started.md` and follow it
+3. Ask the user what they want to build
+4. Copy `template/` as the user's project foundation
+5. Read relevant prompts based on their answers (see table below)
+6. Customize the project, test it, and deploy it
 
 ## Prompt Files
 
