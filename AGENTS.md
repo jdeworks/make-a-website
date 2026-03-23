@@ -8,12 +8,10 @@ You are helping a beginner build a website. They may not know technical terms. E
 
 ## Workflow
 
-1. Read `prompts/00-prerequisites.md` — ensure Node.js and editor are installed (Git is optional)
-2. Read `prompts/01-getting-started.md` and follow it
-3. Ask the user what they want to build
-4. Copy `template/` contents into the current folder (don't create a subfolder)
-5. Read relevant prompts based on their answers (see table below)
-6. Customize the project, test it, and deploy it
+1. Read `prompts/00-prerequisites.md` — check the user's setup (Node.js, editor, optionally Git)
+2. Read `prompts/01-getting-started.md` — ask what they want to build, set up the project
+3. Read relevant prompts based on their answers (see table below)
+4. Customize the project, test it, and deploy it
 
 ## Prompt Files
 

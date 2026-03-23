@@ -1,61 +1,38 @@
-## Using this repo with AI assistants
-
-This repo is designed to work with AI tools whether you are in an online chat or using a local agent.
-
-**If you are using an online chatbox** (Claude.ai, ChatGPT, Gemini, Perplexity, etc.):
-
-Fetch the pre-built context bundle directly — no GitHub API calls, no rate limits:
-```xml
-https://raw.githubusercontent.com/jdeworks/make-a-website/dev/bundle.xml
-```
-
-Paste that URL in your chat and say: *"Use this as the full context for make-a-website. I want to [your goal]."*
-
-**If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
-
-Clone the repo so your agent has the full file structure to work with:
-```bash
-git clone -b dev https://github.com/jdeworks/make-a-website.git
-```
-
-Then point your agent at the cloned folder and work directly with the files.
-
----
-
 # WebStarter Kit
 
-An AI-agent-readable knowledge base that guides complete beginners from "I have an idea" to a deployed, tested, secure website.
+An AI-guided foundation that takes complete beginners from "I have an idea" to a deployed, tested, secure website.
 
-## For AI Agents
+## Get Started
 
-If you are an AI agent, start here:
+Copy-paste one of the prompts below into your AI agent and you're off.
 
-1. Read [`CLAUDE.md`](CLAUDE.md) (Claude Code) or [`AGENTS.md`](AGENTS.md) (all other agents)
-2. Follow [`prompts/01-getting-started.md`](prompts/01-getting-started.md) — it walks you through the full flow
-3. Read additional prompts on-demand based on what the user needs
+### Option 1: Online chat (Claude.ai, ChatGPT, Gemini, etc.)
 
-Entry points for specific tools:
-- **Claude Code** — `CLAUDE.md` (auto-loaded)
-- **Cursor** — `.cursor/rules/webstarter-kit.mdc` (auto-loaded)
-- **GitHub Copilot** — `.github/copilot-instructions.md` (auto-loaded)
-- **Windsurf** — `.windsurf/rules/webstarter-kit.md` (auto-loaded)
-- **ChatGPT / other** — read `AGENTS.md` directly
+Paste this into your chat:
 
-## For Humans
-
-Copy-paste one of these prompts to your AI agent and you're off:
-
-**Claude Code:**
 ```
-I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+I want to build a website. Fetch this context bundle and use it as your guide:
+https://raw.githubusercontent.com/jdeworks/make-a-website/dev/bundle.xml
+
+Start by reading the AGENTS.md content inside the bundle, then walk me through the process.
 ```
 
-**Cursor / ChatGPT / other:**
-```
-I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.
+### Option 2: Local AI agent (Claude Code, Cursor, Windsurf, Codex, etc.)
+
+First clone the repo:
+
+```bash
+git clone -b dev https://github.com/jdeworks/make-a-website.git
+cd make-a-website
 ```
 
-That's it. The agent will ask you what you want to build and handle the rest.
+Then tell your agent:
+
+```
+I want to build a website. Read AGENTS.md and guide me through the process.
+```
+
+That's it. The agent will check your setup, ask what you want to build, and handle the rest.
 
 **Want to browse the guides yourself?** Check out the [handbook](docs/).
 
@@ -76,15 +53,25 @@ That's it. The agent will ask you what you want to build and handle the rest.
 - Vitest
 - Express + better-sqlite3 (server path)
 
+## How It Works
+
+All AI agents (Claude Code, Cursor, Copilot, Windsurf, ChatGPT) read the same instructions from `AGENTS.md`. Tool-specific entry points (CLAUDE.md, .cursor/rules, etc.) just redirect there.
+
+The guided flow:
+
+1. `prompts/00-prerequisites.md` — Check setup (Node.js, editor, optionally Git)
+2. `prompts/01-getting-started.md` — Understand your idea, set up the project
+3. Additional prompts as needed (framework, design, testing, hosting, CI/CD)
+
 ## Project Structure
 
 ```
 make-a-website/
-  CLAUDE.md              # Claude Code entry point
-  AGENTS.md              # Universal agent entry point
-  .cursor/rules/         # Cursor entry point
-  .github/               # Copilot entry point
-  .windsurf/rules/       # Windsurf entry point
+  AGENTS.md              # AI agent instructions (single source of truth)
+  CLAUDE.md              # Redirects to AGENTS.md
+  .cursor/rules/         # Redirects to AGENTS.md
+  .github/               # Redirects to AGENTS.md
+  .windsurf/rules/       # Redirects to AGENTS.md
   prompts/               # AI-readable guidance (12 files)
   template/              # Copyable starter project
   docs/                  # Human-readable handbook
