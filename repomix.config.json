@@ -1,0 +1,13 @@
+{
+  "output": {
+    "style": "xml",
+    "filePath": "bundle.xml"
+  },
+  "ignore": {
+    "customPatterns": [
+      ".claude/**",
+      "docs/**",
+      "bundle.xml"
+    ]
+  }
+}

@@ -1,0 +1,2003 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: .claude/**, docs/**, bundle.xml
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.cursor/
+  rules/
+    webstarter-kit.mdc
+.github/
+  copilot-instructions.md
+.windsurf/
+  rules/
+    webstarter-kit.md
+prompts/
+  00-prerequisites.md
+  01-getting-started.md
+  02-framework-choice.md
+  03-project-structure.md
+  04-testing.md
+  05-security.md
+  06-design.md
+  07-hosting-static.md
+  08-hosting-server.md
+  09-react-upgrade.md
+  10-cicd.md
+  11-readme-template.md
+template/
+  public/
+    favicon.svg
+  src/
+    utils/
+      helpers.js
+    main.js
+    style.css
+  tests/
+    dom.test.js
+    helpers.test.js
+  .env.example
+  .gitignore
+  .prettierrc
+  eslint.config.js
+  index.html
+  package.json
+  vite.config.js
+.gitignore
+AGENTS.md
+CLAUDE.md
+LICENSE
+README.md
+repomix.config.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="repomix.config.json">
+{
+  "output": {
+    "style": "xml",
+    "filePath": "bundle.xml"
+  },
+  "ignore": {
+    "customPatterns": [
+      ".claude/**",
+      "docs/**",
+      "bundle.xml"
+    ]
+  }
+}
+</file>
+
+<file path="prompts/02-framework-choice.md">
+# Framework Choice
+
+Help the user pick the right tool for their project.
+
+## Vanilla HTML/CSS/JS (Default)
+
+- **Best for:** Landing pages, portfolios, simple sites, learning web fundamentals
+- **Pros:** Zero learning curve, fast, works everywhere, no build complexity
+- **Cons:** Gets messy for complex interactive apps, manual DOM manipulation
+- The template already uses this. No changes needed.
+
+## React
+
+- **Best for:** Interactive apps, dashboards, anything with lots of UI state
+- **Pros:** Largest ecosystem, best AI agent support, most job opportunities, huge community
+- **Cons:** Learning curve (JSX, hooks, component model), more boilerplate
+- Upgrade path: see `prompts/09-react-upgrade.md`
+
+## Vue
+
+- **Best for:** Developers who find React too complex, similar use cases as React
+- **Pros:** Gentler syntax, excellent docs, good ecosystem
+- **Cons:** Smaller job market than React, fewer AI-generated examples
+
+## Astro
+
+- **Best for:** Content-heavy sites, blogs, documentation sites
+- **Pros:** Ships zero JS by default, extremely fast, supports multiple frameworks
+- **Cons:** Smaller ecosystem, not ideal for highly interactive apps
+
+## Decision Guide
+
+Ask the user these questions:
+
+1. **Is this a simple site with mostly static content?** Use vanilla. Done.
+2. **Do you need interactive elements beyond basic show/hide?** Consider React.
+3. **Is this primarily a blog or content site?** Consider Astro.
+4. **Are you learning web development?** Start with vanilla to understand the basics.
+
+## Default Recommendation
+
+Start with vanilla from the template. It covers most beginner projects. If you find yourself writing complex DOM manipulation (lots of `document.querySelector`, event listeners everywhere, manual state tracking), that's the signal to upgrade to React.
+
+The upgrade path is documented in `prompts/09-react-upgrade.md` and preserves all your existing work.
+</file>
+
+<file path="prompts/03-project-structure.md">
+# Project Structure
+
+How to organize files based on project type.
+
+## Static Site (Vanilla)
+
+```
+my-project/
+  public/           # Static assets (images, fonts, favicon)
+    favicon.svg
+  src/
+    style.css       # Tailwind CSS entry point
+    main.js         # JavaScript entry point
+    utils/          # Helper functions
+  index.html        # Main HTML file
+  vite.config.js
+  package.json
+```
+
+## React App
+
+```
+my-project/
+  public/
+    favicon.svg
+  src/
+    components/     # Reusable UI components
+      Header.jsx
+      Footer.jsx
+      Button.jsx
+    pages/          # Page-level components
+      Home.jsx
+      About.jsx
+    hooks/          # Custom React hooks
+    utils/          # Helper functions
+    App.jsx         # Root component
+    main.jsx        # Entry point (renders App)
+    style.css       # Tailwind entry point
+  index.html
+  vite.config.js
+  package.json
+```
+
+## Server App (Express + SQLite)
+
+```
+my-project/
+  public/           # Frontend files (served by Express)
+    index.html
+    style.css
+    main.js
+  routes/           # API route handlers
+    items.js
+  data/             # SQLite database directory
+    app.db
+  server.js         # Express entry point
+  package.json
+```
+
+## File Naming Conventions
+
+- **HTML/CSS/JS files:** kebab-case — `my-component.js`, `hero-section.css`
+- **React components:** PascalCase — `Header.jsx`, `UserProfile.jsx`
+- **Utilities/hooks:** camelCase — `useAuth.js`, `formatDate.js`
+- **Config files:** lowercase — `vite.config.js`, `package.json`
+- **Test files:** match source name with `.test` suffix — `utils.test.js`
+
+## When to Split Files
+
+- **Over 200 lines** — split into smaller files
+- **Reused in 2+ places** — extract to its own file
+- **Distinct responsibility** — separate concerns (data fetching vs. rendering)
+
+## Rules
+
+- Keep `index.html` at the project root (Vite expects this)
+- Put all source code in `src/` (not at root level)
+- Put static assets in `public/` (copied as-is during build)
+- One component per file for React projects
+- Group related files together, not by type
+</file>
+
+<file path="prompts/05-security.md">
+# Security Essentials
+
+Security checklist for web projects. Follow every item.
+
+## Secrets Management
+
+- **NEVER commit secrets** (API keys, passwords, tokens) to Git
+- Store secrets in `.env` files — the template `.gitignore` already excludes `.env`
+- For Vite frontend: prefix with `VITE_` — access via `import.meta.env.VITE_API_URL`
+- For Node.js server: access via `process.env.DB_PATH`
+- Example `.env` file:
+  ```
+  VITE_API_URL=https://api.example.com
+  DB_PATH=./data/app.db
+  SECRET_KEY=your-secret-here
+  ```
+
+## HTTPS
+
+- Automatic on GitHub Pages, Railway, Fly.io, Vercel, Netlify
+- Never serve a production site over plain HTTP
+- No action needed if using recommended hosting
+
+## Input Validation
+
+- Never trust user input — validate and sanitize on the server side
+- Use parameterized queries for SQL (NEVER concatenate user input into SQL strings)
+- Escape HTML output to prevent XSS attacks
+- Validate types, lengths, and formats before processing
+
+## Dependencies
+
+- Run `npm audit` regularly to check for vulnerabilities
+- Run `npm audit fix` to auto-fix what's possible
+- Enable Dependabot on GitHub: Settings > Code security > Enable Dependabot alerts
+- Keep dependencies updated: `npm outdated` shows what needs updating
+
+## Authentication
+
+- **Do NOT build your own auth system**
+- Use a proven service: Clerk, Auth0, or Supabase Auth
+- These handle password hashing, session management, OAuth, and MFA
+
+## API Security (if building a server)
+
+- Use `helmet` middleware for secure HTTP headers
+- Use `cors` middleware to control cross-origin access
+- Use `express-rate-limit` to prevent abuse
+- Example:
+  ```js
+  import helmet from 'helmet';
+  import cors from 'cors';
+  import rateLimit from 'express-rate-limit';
+
+  app.use(helmet());
+  app.use(cors({ origin: 'https://yoursite.com' }));
+  app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+  ```
+
+## Pre-Launch Checklist
+
+- Did you remove all hardcoded secrets from source code?
+- Did you add `.env` to `.gitignore`?
+- Did you run `npm audit`?
+- Did you enable HTTPS on your hosting platform?
+- Did you use parameterized queries for all database calls?
+- Did you add rate limiting to your API?
+- Did you validate all user inputs on the server?
+
+## Verify
+
+- [ ] `.env` is in `.gitignore`
+- [ ] No API keys or secrets in source code
+- [ ] `npm audit` shows no high/critical vulnerabilities
+</file>
+
+<file path="prompts/07-hosting-static.md">
+# Hosting: Static Sites on GitHub Pages
+
+Deploy a Vite static site to GitHub Pages using GitHub Actions.
+
+## Step 1: Configure Vite Base Path
+
+In `vite.config.js`, set the `base` option:
+
+```js
+export default defineConfig({
+  base: '/<repo-name>/',  // Replace with your GitHub repo name
+  // Use '/' if deploying to username.github.io (user site)
+});
+```
+
+## Step 2: Create the Deploy Workflow
+
+Create `.github/workflows/deploy.yml` with this exact content:
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+## Step 3: Push to GitHub
+
+```bash
+git add -A
+git commit -m "Add GitHub Pages deploy workflow"
+git remote add origin https://github.com/USERNAME/REPO.git
+git push -u origin main
+```
+
+## Step 4: Enable GitHub Pages
+
+1. Go to your repo on GitHub
+2. Settings > Pages
+3. Source: select **GitHub Actions**
+4. Wait for the action to complete (check the Actions tab)
+
+## Step 5: Verify
+
+Your site is live at: `https://USERNAME.github.io/REPO-NAME/`
+
+## Custom Domain
+
+1. Add a `CNAME` file in `public/` containing your domain: `www.example.com`
+2. Configure DNS: add a CNAME record pointing to `USERNAME.github.io`
+3. In GitHub: Settings > Pages > Custom domain > enter your domain
+
+## SPA Routing Fix
+
+If using client-side routing (React Router, etc.), add this to `package.json` scripts:
+
+```json
+"build": "vite build && cp dist/index.html dist/404.html"
+```
+
+This ensures all routes serve `index.html` instead of a 404 page.
+
+## Verify
+
+- [ ] `npm run build` succeeds without errors
+- [ ] `vite.config.js` has correct `base` path
+- [ ] `.github/workflows/deploy.yml` exists
+- [ ] GitHub Pages source set to "GitHub Actions"
+- [ ] Site is live at the expected URL
+</file>
+
+<file path="prompts/08-hosting-server.md">
+# Hosting: Server Apps on Railway
+
+Deploy an Express + SQLite app to Railway. See `prompts/03-project-structure.md` for file layout.
+
+## Minimal Express Server
+
+Create `server.js`:
+
+```js
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+import Database from 'better-sqlite3';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const app = express();
+const PORT = process.env.PORT || 3000;
+const DB_PATH = process.env.DB_PATH || './data/app.db';
+
+// Middleware
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.use(express.static(join(__dirname, 'public')));
+
+// Database
+const db = new Database(DB_PATH);
+db.pragma('journal_mode = WAL');
+db.exec(`CREATE TABLE IF NOT EXISTS items (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP
+)`);
+
+// Routes — ALWAYS use parameterized queries
+app.get('/api/items', (req, res) => {
+  const items = db.prepare('SELECT * FROM items ORDER BY created_at DESC').all();
+  res.json(items);
+});
+
+app.post('/api/items', (req, res) => {
+  const { name } = req.body;
+  if (!name || typeof name !== 'string') return res.status(400).json({ error: 'Name required' });
+  const result = db.prepare('INSERT INTO items (name) VALUES (?)').run(name.trim());
+  res.status(201).json({ id: result.lastInsertRowid, name: name.trim() });
+});
+
+app.delete('/api/items/:id', (req, res) => {
+  db.prepare('DELETE FROM items WHERE id = ?').run(req.params.id);
+  res.status(204).end();
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
+
+Install dependencies:
+```bash
+npm install express helmet cors express-rate-limit better-sqlite3
+```
+
+Add to `package.json`:
+```json
+"type": "module",
+"scripts": { "start": "node server.js" }
+```
+
+## Deploy to Railway
+
+1. Push your project to GitHub
+2. Go to https://railway.com and connect your GitHub repo
+3. **Add a persistent volume:**
+   - In the service settings, go to Volumes
+   - Mount path: `/data`
+4. **Set environment variables:**
+   - `DB_PATH=/data/app.db`
+5. Railway auto-detects Node.js and runs `npm start`
+6. Railway provides a public URL for your app
+
+## Gotchas
+
+- **Persistent volume is required** — without it, SQLite data is lost on every deploy
+- **Use Node.js 20 LTS** — set in Railway environment or add `"engines": {"node": "20"}` to package.json
+- **Single instance only** — SQLite doesn't support multiple concurrent writers
+- **Never concatenate user input into SQL** — always use parameterized queries (`?` placeholders)
+
+## Verify
+
+- [ ] Server starts with `node server.js` or `npm start`
+- [ ] API routes respond correctly (test with curl or browser)
+- [ ] SQLite database file is in `.gitignore`
+- [ ] Environment variables configured on hosting platform
+- [ ] Persistent volume attached for SQLite data
+</file>
+
+<file path="prompts/09-react-upgrade.md">
+# Upgrading to React
+
+Step-by-step guide to convert the vanilla template to a React app. Tailwind works the same way — no CSS changes needed.
+
+## Step 1: Install Dependencies
+
+```bash
+npm install react react-dom
+npm install -D @vitejs/plugin-react
+```
+
+## Step 2: Update Vite Config
+
+Replace `vite.config.js`:
+
+```js
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [tailwindcss(), react()],
+});
+```
+
+## Step 3: Update index.html
+
+Change the script tag and add a root div:
+
+```html
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+```
+
+## Step 4: Create Entry Point
+
+Rename `src/main.js` to `src/main.jsx`:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './style.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+## Step 5: Create App Component and Extract Components
+
+Create `src/App.jsx` that imports components from `src/components/` (Header.jsx, Hero.jsx, Features.jsx, Footer.jsx). Each component is a function that returns JSX. Convert HTML to JSX: `class` becomes `className`, `for` becomes `htmlFor`, close all self-closing tags.
+
+## Step 7: State Management
+
+- Start with `useState` and `useEffect` for component state
+- Pass data between components with props
+- If state gets complex (shared across many components), add Zustand: `npm install zustand`
+
+## Step 8: Testing
+
+```bash
+npm install -D @testing-library/react @testing-library/jest-dom
+```
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import Header from './components/Header';
+
+describe('Header', () => {
+  it('renders site name', () => {
+    render(<Header />);
+    expect(screen.getByText('My Site')).toBeTruthy();
+  });
+});
+```
+
+## Notes
+
+- Tailwind classes work identically in JSX — no changes needed
+- Run `npm run dev` after each step to verify nothing is broken
+- Commit after each successful step so you can revert if needed
+
+## Verify
+
+- [ ] `npm run dev` starts without errors after React setup
+- [ ] Components render correctly in browser
+- [ ] Existing tests still pass
+- [ ] New component tests added
+</file>
+
+<file path="prompts/10-cicd.md">
+# CI/CD with GitHub Actions
+
+Automatically run tests and lint on every push and pull request.
+
+## CI Workflow
+
+Create `.github/workflows/ci.yml`:
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:run
+      - run: npm run build
+```
+
+## What This Does
+
+- **Triggers** on every push to `main` and every pull request targeting `main`
+- **Installs** dependencies with `npm ci` (clean install, uses lockfile)
+- **Lints** code to catch style and syntax issues
+- **Tests** run once (not in watch mode) to verify nothing is broken
+- **Builds** the project to catch build-time errors
+
+If any step fails, the workflow fails and GitHub shows a red X on the commit/PR.
+
+## Add a Status Badge
+
+Add this to the top of your `README.md` (replace USERNAME and REPO):
+
+```markdown
+![CI](https://github.com/USERNAME/REPO/actions/workflows/ci.yml/badge.svg)
+```
+
+## Combining with Deploy
+
+**For static sites:** Use both `ci.yml` and the `deploy.yml` from `prompts/07-hosting-static.md`. CI runs on PRs, deploy runs on push to main.
+
+**For server apps:** If using Railway with auto-deploy from GitHub, CI validates the code and Railway deploys automatically when main is updated.
+
+## Combined CI + Deploy
+
+For static sites, combine CI with deploy by adding the pages artifact upload and deploy job from `prompts/07-hosting-static.md` into the CI workflow. Add `upload-pages-artifact` after the build step (with `if: github.ref == 'refs/heads/main'`), then add a separate deploy job that `needs: test` and uses `deploy-pages`.
+
+## Tips
+
+- Never skip CI — broken code on main wastes everyone's time
+- If a test fails in CI but passes locally, check the Node.js version matches
+- Keep CI fast: under 2 minutes is the goal
+</file>
+
+<file path="prompts/11-readme-template.md">
+# README Template
+
+Use this template to generate a README for the user's project. Replace all `{placeholders}` with actual values.
+
+## Template
+
+Fill in and write this to the project's `README.md`:
+
+```markdown
+# {Project Name}
+
+{One-line description of what this project does}
+
+## Demo
+
+[Live site]({deployed-url})
+
+## Features
+
+- {Feature 1}
+- {Feature 2}
+- {Feature 3}
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+
+- npm
+
+### Installation
+
+\`\`\`bash
+git clone {repo-url}
+cd {project-name}
+npm install
+npm run dev
+\`\`\`
+
+### Running Tests
+
+\`\`\`bash
+npm test
+\`\`\`
+
+## Tech Stack
+
+- {Framework: Vanilla JS / React / Vue / Astro}
+- Tailwind CSS
+- Vite
+- Vitest
+
+## Deployment
+
+{Describe how this project is deployed — e.g., "Deployed to GitHub Pages via GitHub Actions" or "Deployed to Railway with persistent SQLite storage"}
+
+## License
+
+MIT
+```
+
+## Instructions for AI Agents
+
+1. Replace every `{placeholder}` with the actual project values
+2. Remove the Demo section if the site isn't deployed yet
+3. Add additional sections only if relevant (API docs, environment variables, contributing)
+4. Keep it concise — a README should be scannable in 30 seconds
+5. Add the CI badge at the top if CI is configured (see `prompts/10-cicd.md`)
+</file>
+
+<file path="template/public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="6" fill="#2563eb"/>
+  <text x="16" y="23" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">W</text>
+</svg>
+</file>
+
+<file path="template/src/utils/helpers.js">
+/**
+ * Formats a Date object to a YYYY-MM-DD string.
+ * @param {Date} date
+ * @returns {string}
+ */
+export const formatDate = (date) => {
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const d = String(date.getDate()).padStart(2, '0')
+  return `${y}-${m}-${d}`
+}
+
+/**
+ * Converts text to a URL-friendly slug.
+ * @param {string} text
+ * @returns {string}
+ */
+export const slugify = (text) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+}
+
+/**
+ * Capitalizes the first letter of a string.
+ * @param {string} str
+ * @returns {string}
+ */
+export const capitalize = (str) => {
+  if (!str) return ''
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+</file>
+
+<file path="template/src/main.js">
+import './style.css'
+
+/**
+ * Returns a greeting string for the given name.
+ * @param {string} name
+ * @returns {string}
+ */
+export const greet = (name) => {
+  return `Hello, ${name}! Welcome to your new website.`
+}
+
+/**
+ * Toggles the mobile navigation menu.
+ */
+const initMobileNav = () => {
+  const toggle = document.getElementById('nav-toggle')
+  const menu = document.getElementById('mobile-menu')
+
+  if (!toggle || !menu) return
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('hidden')
+    toggle.setAttribute('aria-expanded', String(!isOpen))
+  })
+}
+
+/**
+ * Initialize the app when the DOM is ready.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNav()
+  console.log(greet('developer'))
+})
+</file>
+
+<file path="template/src/style.css">
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+}
+</file>
+
+<file path="template/tests/dom.test.js">
+// @vitest-environment happy-dom
+
+describe('DOM basics', () => {
+  it('can create and query elements', () => {
+    const div = document.createElement('div')
+    div.textContent = 'Hello from the DOM'
+    div.setAttribute('id', 'test-el')
+    document.body.appendChild(div)
+
+    const found = document.getElementById('test-el')
+    expect(found).not.toBeNull()
+    expect(found.textContent).toBe('Hello from the DOM')
+
+    document.body.removeChild(div)
+  })
+})
+</file>
+
+<file path="template/tests/helpers.test.js">
+import { formatDate, slugify, capitalize } from '../src/utils/helpers.js'
+
+describe('formatDate', () => {
+  it('formats a date as YYYY-MM-DD', () => {
+    expect(formatDate(new Date(2026, 0, 15))).toBe('2026-01-15')
+  })
+
+  it('pads single-digit months and days', () => {
+    expect(formatDate(new Date(2025, 2, 5))).toBe('2025-03-05')
+  })
+
+  it('handles December 31st', () => {
+    expect(formatDate(new Date(2024, 11, 31))).toBe('2024-12-31')
+  })
+})
+
+describe('slugify', () => {
+  it('converts a simple string to a slug', () => {
+    expect(slugify('Hello World')).toBe('hello-world')
+  })
+
+  it('removes special characters', () => {
+    expect(slugify('Hello, World! How are you?')).toBe('hello-world-how-are-you')
+  })
+
+  it('collapses multiple spaces and dashes', () => {
+    expect(slugify('  too   many   spaces  ')).toBe('too-many-spaces')
+  })
+
+  it('handles an empty string', () => {
+    expect(slugify('')).toBe('')
+  })
+})
+
+describe('capitalize', () => {
+  it('capitalizes the first letter', () => {
+    expect(capitalize('hello')).toBe('Hello')
+  })
+
+  it('returns empty string for empty input', () => {
+    expect(capitalize('')).toBe('')
+  })
+
+  it('handles a single character', () => {
+    expect(capitalize('a')).toBe('A')
+  })
+})
+</file>
+
+<file path="template/.gitignore">
+node_modules
+dist
+.env
+.env.local
+.env.*.local
+*.db
+.DS_Store
+thumbs.db
+*.log
+</file>
+
+<file path="template/.prettierrc">
+{
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 100
+}
+</file>
+
+<file path="template/eslint.config.js">
+import js from '@eslint/js'
+
+export default [
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-console': 'off',
+    },
+  },
+]
+</file>
+
+<file path="template/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern starter template built with Vite and Tailwind CSS." />
+    <title>My Website</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-primary">MyWebsite</a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="nav-toggle"
+          class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Navigation links -->
+        <ul id="nav-menu" class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+          <li><a href="#features" class="hover:text-primary transition-colors">Features</a></li>
+          <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+          <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile menu -->
+      <ul id="mobile-menu" class="hidden flex-col gap-2 px-4 pb-4 text-sm font-medium text-gray-600 md:hidden">
+        <li><a href="#features" class="block py-2 hover:text-primary transition-colors">Features</a></li>
+        <li><a href="#about" class="block py-2 hover:text-primary transition-colors">About</a></li>
+        <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">Contact</a></li>
+      </ul>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <!-- Hero section -->
+      <section class="max-w-6xl mx-auto px-4 py-20 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+          Build something great
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+          This is your starter template — customize everything! It comes with Vite,
+          Tailwind CSS v4, and Vitest ready to go.
+        </p>
+        <a
+          href="#features"
+          class="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors"
+        >
+          Get started
+        </a>
+      </section>
+
+      <!-- Features section -->
+      <section id="features" class="bg-gray-50 py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Features</h2>
+          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Card 1 -->
+            <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Lightning fast</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Powered by Vite for instant server start and blazing-fast hot module replacement during development.
+              </p>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Modern styling</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Tailwind CSS v4 with custom theme tokens. Utility-first styling that keeps your CSS lean and maintainable.
+              </p>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+              <div class="w-12 h-12 bg-blue-100 text-primary rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Tested from day one</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Vitest is pre-configured with DOM testing support. Write unit and integration tests with zero setup.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 py-8">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+        <p>&copy; 2026 My Website. Built with Vite &amp; Tailwind CSS.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+</file>
+
+<file path="template/package.json">
+{
+  "name": "my-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "eslint src/",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "vitest": "^4.0.0",
+    "happy-dom": "^20.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  }
+}
+</file>
+
+<file path="template/vite.config.js">
+/// <reference types="vitest/config" />
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [tailwindcss()],
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+  },
+})
+</file>
+
+<file path=".gitignore">
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
+</file>
+
+<file path="LICENSE">
+MIT License
+
+Copyright (c) 2026 jdeworks
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</file>
+
+<file path=".cursor/rules/webstarter-kit.mdc">
+---
+description: "WebStarter Kit entry point — guides beginners through building a website from idea to deployment"
+alwaysApply: true
+---
+
+# WebStarter Kit
+
+You are helping a beginner build a website. They may not know technical terms.
+Explain everything simply. Ask before making big decisions.
+
+## Workflow
+
+1. Read `prompts/01-getting-started.md` and follow it
+2. Based on answers, read relevant prompts in order
+3. Copy `template/` contents into the current folder (don't create a subfolder)
+4. Customize based on what they want to build
+5. Set up tests, security, and hosting
+
+## Prompt Files
+
+- `prompts/00-prerequisites.md` — Check/install Node.js, editor; Git is optional
+- `prompts/01-getting-started.md` — Main workflow: idea to working project
+- `prompts/02-framework-choice.md` — Vanilla vs React vs Vue vs Astro
+- `prompts/03-project-structure.md` — How to organize files
+- `prompts/04-testing.md` — Vitest setup and writing tests
+- `prompts/05-security.md` — Security essentials checklist
+- `prompts/06-design.md` — Tailwind CSS + make-it-look-good design guidance
+- `prompts/07-hosting-static.md` — Deploy to GitHub Pages
+- `prompts/08-hosting-server.md` — Deploy Express + SQLite to Railway
+- `prompts/09-react-upgrade.md` — Upgrade vanilla to React
+- `prompts/10-cicd.md` — GitHub Actions CI/CD
+- `prompts/11-readme-template.md` — README template for the generated project
+
+## Rules
+
+- Always ask before making big decisions (framework, hosting, database)
+- Explain what you are doing in simple terms
+- Run `npm test` after changes to make sure nothing breaks
+- Follow `prompts/05-security.md` — never put secrets in code
+- Use make-it-look-good for design: https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
+
+## Quick Start
+
+1. Read `prompts/00-prerequisites.md` — ensure tools are installed
+2. Read `prompts/01-getting-started.md` — walk through the questions
+3. Read relevant prompts based on answers
+4. Build, test, deploy
+</file>
+
+<file path=".github/copilot-instructions.md">
+# WebStarter Kit
+
+This is the WebStarter Kit — a guided foundation for building websites. Read [AGENTS.md](../AGENTS.md) for full instructions.
+
+## Workflow
+
+1. Read `prompts/01-getting-started.md` and follow it
+2. Ask the user what they want to build
+3. Copy `template/` contents into the current folder (don't create a subfolder)
+4. Read relevant prompts based on their answers
+5. Customize, test, deploy
+
+## Prompt Files
+
+| File | Purpose |
+|------|---------|
+| `prompts/00-prerequisites.md` | Check/install Node.js, editor; Git is optional |
+| `prompts/01-getting-started.md` | Main workflow: idea to working project |
+| `prompts/02-framework-choice.md` | Vanilla vs React vs Vue vs Astro |
+| `prompts/03-project-structure.md` | How to organize files |
+| `prompts/04-testing.md` | Vitest setup and writing tests |
+| `prompts/05-security.md` | Security essentials checklist |
+| `prompts/06-design.md` | Tailwind CSS + design guidance |
+| `prompts/07-hosting-static.md` | Deploy to GitHub Pages |
+| `prompts/08-hosting-server.md` | Deploy Express + SQLite to Railway |
+| `prompts/09-react-upgrade.md` | Upgrade vanilla to React |
+| `prompts/10-cicd.md` | GitHub Actions CI/CD |
+| `prompts/11-readme-template.md` | README template for the generated project |
+
+## Build Commands
+
+```
+npm run dev        # Start dev server
+npm run build      # Production build
+npm test           # Run tests in watch mode
+npm run test:run   # Run tests once
+```
+</file>
+
+<file path=".windsurf/rules/webstarter-kit.md">
+---
+trigger: always
+---
+
+# WebStarter Kit
+
+WebStarter Kit is a guided foundation for building websites. You are helping a beginner who may not know technical terms. Explain simply. Ask before big decisions.
+
+## Workflow
+
+1. Read `prompts/01-getting-started.md` and follow it
+2. Ask the user what they want to build
+3. Copy `template/` contents into the current folder (don't create a subfolder)
+4. Read relevant prompts based on their answers
+5. Customize, test, deploy
+
+## Prompt Files
+
+- `prompts/00-prerequisites.md` — Check/install Node.js, editor; Git is optional
+- `prompts/01-getting-started.md` — Main workflow: idea to working project
+- `prompts/02-framework-choice.md` — Vanilla vs React vs Vue vs Astro
+- `prompts/03-project-structure.md` — How to organize files
+- `prompts/04-testing.md` — Vitest setup and writing tests
+- `prompts/05-security.md` — Security essentials checklist
+- `prompts/06-design.md` — Tailwind CSS + design guidance
+- `prompts/07-hosting-static.md` — Deploy to GitHub Pages
+- `prompts/08-hosting-server.md` — Deploy Express + SQLite to Railway
+- `prompts/09-react-upgrade.md` — Upgrade vanilla to React
+- `prompts/10-cicd.md` — GitHub Actions CI/CD
+- `prompts/11-readme-template.md` — README template for the generated project
+
+## Rules
+
+- Ask before making big decisions (framework, hosting, database)
+- Explain what you are doing and why, in plain language
+- Run `npm test` after making changes
+- Never commit secrets — use environment variables
+- Design reference: https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
+
+## Tech Stack
+
+Vite, Tailwind CSS v4, Vitest, Express + better-sqlite3 (server path)
+
+## Build Commands
+
+```
+npm run dev        # Start dev server
+npm run build      # Production build
+npm test           # Run tests in watch mode
+npm run test:run   # Run tests once
+```
+</file>
+
+<file path="prompts/04-testing.md">
+# Testing
+
+Vitest is already configured in the template. This guide covers writing and running tests.
+
+## Running Tests
+
+```bash
+npm test          # Watch mode — re-runs on file changes
+npm run test:run  # Run once and exit (used in CI)
+```
+
+## What to Test
+
+- Utility functions (formatDate, calculateTotal, validateEmail)
+- Data transformations (parsing, filtering, sorting)
+- Component behavior (user interactions, conditional rendering)
+- API response handling (success and error cases)
+
+## What NOT to Test
+
+- CSS styling and visual appearance
+- Third-party library internals
+- Trivial code (simple getters, constants, type definitions)
+- Implementation details (internal state, private methods)
+
+## Writing a Test
+
+Create test files in the `tests/` directory with `.test.js` suffix. The template includes example tests in `tests/` to get you started.
+
+```js
+// tests/math.test.js
+import { describe, it, expect } from 'vitest';
+import { add, multiply } from '../src/utils/math.js';
+
+describe('add', () => {
+  it('adds two positive numbers', () => {
+    expect(add(2, 3)).toBe(5);
+  });
+
+  it('handles negative numbers', () => {
+    expect(add(-1, 1)).toBe(0);
+  });
+});
+```
+
+## DOM Testing
+
+happy-dom is configured in the template. You can test DOM manipulation:
+
+```js
+// src/utils/dom.test.js
+import { describe, it, expect } from 'vitest';
+
+describe('DOM manipulation', () => {
+  it('creates an element with text', () => {
+    const el = document.createElement('p');
+    el.textContent = 'Hello';
+    expect(el.textContent).toBe('Hello');
+  });
+});
+```
+
+## Testing Patterns
+
+- **Arrange** — set up data and conditions
+- **Act** — call the function or trigger the action
+- **Assert** — check the result with `expect()`
+
+## Coverage Goal
+
+- At least one test file per feature area
+- Focus on logic, not boilerplate
+- Tests run automatically in CI (see `prompts/10-cicd.md`)
+
+## Common Matchers
+
+```js
+expect(value).toBe(exact)           // Strict equality
+expect(value).toEqual(deep)         // Deep equality for objects
+expect(value).toBeTruthy()          // Truthy check
+expect(value).toContain(item)       // Array/string contains
+expect(fn).toThrow()                // Function throws
+```
+
+## Verify
+
+- [ ] `npm run test:run` passes all tests
+- [ ] At least one test file exists per feature area
+- [ ] Tests cover both happy path and edge cases
+</file>
+
+<file path="prompts/06-design.md">
+# Design
+
+The template uses Tailwind CSS v4 (already configured). Follow these guidelines for professional results.
+
+## Design Reference
+
+For professional design quality, fetch and apply the principles from:
+https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
+
+Read that file and apply its design principles to the user's project. If you cannot fetch it, use the guidelines below — they are sufficient on their own.
+
+## Tailwind CSS v4
+
+**Important:** Tailwind v4 is different from v3. Ignore online tutorials that mention `tailwind.config.js` — v4 uses CSS-based config only.
+
+- Config is CSS-based in Tailwind v4 — customize in `src/style.css` using `@theme {}`:
+  ```css
+  @import "tailwindcss";
+  @theme {
+    --color-primary: #3b82f6;
+    --color-secondary: #64748b;
+  }
+  ```
+- No `tailwind.config.js` needed in v4
+
+## Mobile-First Design
+
+- Design for mobile screens first, then add breakpoints for larger screens
+- Breakpoint prefixes: `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px)
+- Example: `class="text-sm md:text-base lg:text-lg"`
+
+## Typography
+
+- Use Inter font or system fonts (`font-sans` in Tailwind)
+- Limit body text to 2 sizes: base for content, sm for secondary text
+- Clear heading hierarchy: one `h1` per page, then `h2`, `h3` as needed
+- Line height: use `leading-relaxed` for body text
+
+## Color
+
+- Pick **one primary color** from Tailwind's palette (blue, indigo, emerald, etc.)
+- Pick **one neutral palette** (slate, gray, zinc)
+- Use 3-4 shades of each: light for backgrounds, medium for borders, dark for text
+- Example palette: `bg-blue-600` primary, `bg-slate-50` background, `text-slate-900` text
+
+## Spacing
+
+- Use Tailwind's spacing scale consistently
+- Common pattern: `p-4` for cards, `p-6` for sections, `p-8` for page margins
+- Don't mix arbitrary values — stick to the scale (4, 6, 8, 12, 16)
+- Use `gap-4` or `gap-6` for flex/grid layouts
+
+## Accessibility
+
+- Use semantic HTML: `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`
+- Proper heading order: `h1` > `h2` > `h3` (never skip levels)
+- All images need `alt` text
+- Color contrast: minimum 4.5:1 ratio for text
+- Interactive elements need focus styles (Tailwind's `focus:ring-2`)
+- Buttons need descriptive text (not just icons)
+
+## Layout Patterns
+
+- **Container:** `max-w-7xl mx-auto px-4`
+- **Card:** `rounded-lg border p-6 shadow-sm`
+- **Section:** `py-16` or `py-24` for vertical rhythm
+- **Grid:** `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`
+
+## Images
+
+- Use `loading="lazy"` on images below the fold
+- Add `width` and `height` attributes to prevent layout shift
+- For responsive images: `class="w-full h-auto object-cover"`
+- Optimize images before adding: compress JPG/PNG, use WebP where possible
+- For galleries: use CSS grid with `aspect-ratio` for consistent sizing
+
+## Contact Forms on Static Sites
+
+Static sites can't process forms server-side. Use one of these:
+- **Formspree** (formspree.io) — free tier, add `action="https://formspree.io/f/YOUR_ID"` to your form
+- **mailto: link** — simplest option: `<a href="mailto:you@example.com">Email me</a>`
+- **Netlify Forms** — if hosting on Netlify, add `netlify` attribute to your form tag
+</file>
+
+<file path="template/.env.example">
+# Rename this file to .env and fill in your values
+# NEVER commit .env to git — it's in .gitignore
+
+# GitHub token (for gh CLI and Git push)
+# Get one at: https://github.com/settings/tokens
+# GH_TOKEN=ghp_your_token_here
+
+# Example: API key for a service
+# API_KEY=your-api-key-here
+
+# Example: Database path (for server path)
+# DB_PATH=./data/app.db
+</file>
+
+<file path="prompts/00-prerequisites.md">
+# Prerequisites
+
+Check and install everything needed before starting. Walk the user through each item.
+
+**Important:** At every step, remind the user: "If anything is confusing, just ask — there are no silly questions. I'm here to help!"
+
+## Experience Check
+
+Before diving in, ask the user:
+> "Before we start, how comfortable are you with coding and tools like the terminal? Pick whichever fits best:
+>
+> **A) Total beginner** — I've never coded before or barely touched it
+> **B) Some experience** — I've done a bit of coding or used the terminal before
+> **C) Comfortable** — I know my way around code and the command line"
+
+- If they pick **A**, use the "Total Novice" recommendations throughout (marked with 🟢 below)
+- If they pick **B** or **C**, give them more options and let them choose
+- If they don't respond or seem unsure, assume **A**
+
+## Node.js 20 LTS
+
+**What is it?** Node.js lets you run JavaScript outside a browser. You need it to build modern websites.
+
+1. Ask the user to open their terminal and run: `node -v`
+2. If output starts with `v20` or higher — they're good
+3. If command not found or version too old — install from https://nodejs.org/ (pick the LTS version, the big green button)
+4. After install, have them close and reopen their terminal, then run `node -v` again
+
+🟢 **Total novice tip:** "A terminal is the black window where you type commands. On Windows, search for 'PowerShell'. On Mac, search for 'Terminal'."
+
+## npm
+
+- Comes bundled with Node.js. Verify with: `npm -v`
+- Should show version 10+. If missing, reinstalling Node.js fixes it.
+
+## Code Editor
+
+- **Recommended:** VS Code (https://code.visualstudio.com/) or Cursor (https://cursor.com/)
+- Either works. Cursor has built-in AI features.
+- Suggest installing the Tailwind CSS IntelliSense extension
+
+🟢 **Total novice recommendation:** "Use VS Code — it's free, popular, and has great beginner tutorials built in."
+
+## Git (Optional — you can skip this)
+
+Git is a tool that saves snapshots of your code so you can undo mistakes and share your work. It's like "save points" in a video game. **You don't need it to build your website**, but it's very useful later when you want to publish it online.
+
+> Ask the user: "Would you like to set up Git now, or skip it and focus on building first? You can always add it later."
+
+If they want to skip Git, that's fine! Jump to the Verification Checklist and skip the Git items. Mark in `project-config.md` that `git: no`.
+
+### If they want Git:
+
+1. Ask the user to run: `git --version`
+2. If output shows `git version 2.x` — they're good
+3. If command not found — install from https://git-scm.com/
+4. After install, configure identity:
+   ```bash
+   git config --global user.name "Your Name"
+   git config --global user.email "your@email.com"
+   ```
+
+### Why GitHub? (explain simply)
+
+GitHub is a free website where you can:
+- **Back up your code** — if your computer breaks, your code is safe
+- **Share your work** — show your website to others or collaborate
+- **Publish your website** — GitHub can host your site for free (GitHub Pages)
+
+Think of it like Google Drive, but specifically made for code.
+
+### Setting up GitHub (simplest path)
+
+If the user wants GitHub:
+
+1. Sign up at https://github.com/ (if they don't have an account)
+2. Create a Personal Access Token:
+   - Go to https://github.com/settings/tokens
+   - Click "Generate new token" → "Generate new token (classic)"
+   - Give it a name (e.g. "my website project")
+   - Select scopes: `repo` (full control of repositories)
+   - Click "Generate token" and **copy it immediately** (you won't see it again)
+3. Add the token to your environment. Create or edit the `.env` file in your project:
+   ```bash
+   GH_TOKEN=ghp_your_token_here
+   ```
+   The GitHub CLI (`gh`) and Git will automatically pick this up.
+
+4. **Test that it works:**
+   ```bash
+   gh auth status
+   ```
+   If it shows your username, you're good!
+
+🟢 **Total novice note:** "A token is like a password that lets your computer talk to GitHub. We save it in a `.env` file which stays private — it's never uploaded or shared."
+
+**Why `.env`?** If you're working in a container or sandbox that gets reset, your login would be lost each time. By keeping the token in `.env` (which can live on a persistent volume), you stay logged in across restarts.
+
+### .gitignore — keeping junk out of Git
+
+When you use Git, there's a file called `.gitignore` that tells Git which files to ignore. The template already has one set up for you. It ignores things like:
+- `node_modules/` — a folder with thousands of helper files that can be re-downloaded (run `npm install` to get them back)
+- `.env` — files with passwords and secrets that should stay private
+- `dist/` — files generated by the build process
+
+You don't need to do anything — this is already configured. Just know it's there!
+
+## Verification Checklist
+
+Run these commands and confirm output:
+
+```bash
+node -v    # Should print v20.x.x or higher
+npm -v     # Should print 10.x.x+
+```
+
+If using Git:
+```bash
+git --version     # Should print git version 2.x.x
+```
+
+If all checks pass, the user is ready. Proceed to `prompts/01-getting-started.md`.
+</file>
+
+<file path="prompts/01-getting-started.md">
+# Getting Started
+
+This is the main workflow. Follow these steps as a conversation with the user.
+
+**Remember:** Always tell the user "If anything is confusing or you're not sure, just ask! There are no wrong answers."
+
+## Step 1: Understand the Project
+
+Ask the user:
+> "What do you want to build? Describe your website idea — what it does, who it's for, and any features you have in mind. Don't worry about technical details — just describe it like you'd tell a friend."
+
+Wait for their response before continuing.
+
+## Step 2: Determine the Type
+
+If the user identified as a **total novice** (or you haven't asked yet), use this approach:
+
+> "I need to figure out one thing about your website. Let me describe two options in simple terms:
+>
+> **Option A: A website that shows information** (like a portfolio, blog, or landing page)
+> Everyone who visits sees the same content. You update it by changing the code. Think of it like a digital poster or brochure.
+>
+> **Option B: A website where people can log in or save things** (like a social media site, online store, or app with user accounts)
+> Each person has their own data. The website remembers who they are. Think of it like Instagram or Amazon.
+>
+> Based on what you described, I'd recommend **Option [A/B]** because [reason]. Does that sound right?
+>
+> (Not sure? Just ask and I'll help you figure it out!)"
+
+Fill in the recommendation based on what they described in Step 1. Most beginner projects are Option A (static).
+
+If the user is more experienced, you can use the shorter version:
+> "Is this a static site (blog, portfolio, landing page) or does it need a server (user accounts, database, API)?"
+
+- **Static (Option A)** — content doesn't change per user, no login, no database
+- **Server (Option B)** — needs user accounts, saves data, talks to external APIs with secrets
+
+## Step 3: Set Up the Project
+
+**Important: Work in the current folder.** Do not create a new subfolder. Copy the template contents directly into where we are.
+
+1. Copy the template files into the current directory:
+   ```bash
+   cp -rn template/* template/.* . 2>/dev/null || cp -rn template/* .
+   ```
+   (This copies all files from `template/` into the current folder without overwriting existing files.)
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+4. Confirm the user sees the starter page in their browser (usually http://localhost:5173)
+
+🟢 **Total novice celebration:** "Your dev server is running — you just set up a real development environment! The website you see in your browser will update automatically as we make changes."
+
+### About node_modules
+
+After running `npm install`, you'll see a `node_modules` folder appear. This is normal! It contains helper code that your project needs. A few things to know:
+- **Don't edit files in there** — they're managed by npm
+- **Don't worry about its size** — it can be large, but that's normal
+- **It's not saved to Git** — the `.gitignore` file tells Git to skip it
+- **You can delete and recreate it** — just run `npm install` again
+
+## Step 4: Initialize Git (if using Git)
+
+Check `project-config.md` or ask: is the user using Git?
+
+**If yes:**
+```bash
+git init
+git add .
+git commit -m "Initial commit from WebStarter Kit template"
+```
+
+Then do a quick test to make sure everything is working:
+```bash
+git log --oneline
+```
+They should see their commit. Celebrate: "Git is tracking your project now. Every change you make can be saved as a snapshot!"
+
+**If no Git:** Skip this step entirely. The user can always add Git later.
+
+## Step 5: Record Project Decisions
+
+Create a `project-config.md` in the project root to record these decisions. Update it as you make more choices.
+
+```markdown
+# Project Configuration
+
+- **Project name:** {name}
+- **Type:** static / server
+- **Description:** {what the user described}
+- **Framework:** vanilla (default, can upgrade to React later)
+- **Hosting:** GitHub Pages / Railway / not decided yet
+- **Needs auth:** yes / no
+- **Needs database:** yes / no
+- **Using Git:** yes / no
+```
+
+Fill in the values based on what the user told you in Steps 1 and 2. Leave hosting blank if not yet decided. This file ensures later prompts know what the user chose without re-asking.
+
+## Step 6: Guide to Next Steps
+
+Based on their project type, point them to the right prompts:
+
+**For all projects:**
+- Read `prompts/02-framework-choice.md` to decide on a framework
+- Read `prompts/03-project-structure.md` to organize files
+- Read `prompts/06-design.md` for styling guidance
+- Read `prompts/04-testing.md` to add tests
+- Read `prompts/05-security.md` for security basics
+
+**For static sites:**
+- Read `prompts/07-hosting-static.md` to deploy to GitHub Pages
+
+**For server apps:**
+- Read `prompts/08-hosting-server.md` to deploy with Express + SQLite
+
+**When they need more interactivity:**
+- Read `prompts/09-react-upgrade.md` to upgrade to React
+
+**For CI/CD (requires Git):**
+- Read `prompts/10-cicd.md` for automated testing and deployment
+
+## Tone
+
+Be encouraging. The user is likely a beginner. Celebrate small wins. Don't overwhelm with options — guide them one step at a time. Always remind them they can ask questions about anything.
+
+## Verify
+
+- [ ] `npm run dev` starts without errors
+- [ ] Browser shows the starter page at localhost:5173
+- [ ] `npm run test:run` passes all tests
+- [ ] Git repo initialized with initial commit (if using Git)
+- [ ] `project-config.md` created with user's choices
+</file>
+
+<file path="AGENTS.md">
+# WebStarter Kit
+
+WebStarter Kit is a guided foundation for building websites. It walks beginners from idea to deployed site using structured prompts.
+
+## Your Role
+
+You are helping a beginner build a website. They may not know technical terms. Explain everything simply. Ask before making big decisions.
+
+## Workflow
+
+1. Read `prompts/00-prerequisites.md` — ensure Node.js and editor are installed (Git is optional)
+2. Read `prompts/01-getting-started.md` and follow it
+3. Ask the user what they want to build
+4. Copy `template/` contents into the current folder (don't create a subfolder)
+5. Read relevant prompts based on their answers (see table below)
+6. Customize the project, test it, and deploy it
+
+## Prompt Files
+
+| File | Purpose |
+|------|---------|
+| `prompts/00-prerequisites.md` | Check/install Node.js, editor; Git is optional |
+| `prompts/01-getting-started.md` | Main workflow: idea to working project |
+| `prompts/02-framework-choice.md` | Vanilla vs React vs Vue vs Astro |
+| `prompts/03-project-structure.md` | How to organize files |
+| `prompts/04-testing.md` | Vitest setup and writing tests |
+| `prompts/05-security.md` | Security essentials checklist |
+| `prompts/06-design.md` | Tailwind CSS + make-it-look-good design guidance |
+| `prompts/07-hosting-static.md` | Deploy to GitHub Pages |
+| `prompts/08-hosting-server.md` | Deploy Express + SQLite to Railway |
+| `prompts/09-react-upgrade.md` | Upgrade vanilla to React |
+| `prompts/10-cicd.md` | GitHub Actions CI/CD |
+| `prompts/11-readme-template.md` | README template for the generated project |
+
+## Rules
+
+- **Ask first.** Always ask before making big decisions (framework, hosting, database, etc.)
+- **Explain simply.** Say what you are doing and why, in plain language.
+- **Test after changes.** Run `npm test` after making changes to make sure nothing breaks.
+- **No secrets in code.** Follow `prompts/05-security.md` — use environment variables, never commit secrets.
+- **Design reference.** Use make-it-look-good for design guidance:
+  https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
+
+## Tech Stack
+
+- **Build tool:** Vite
+- **Styling:** Tailwind CSS v4
+- **Testing:** Vitest
+- **Server path:** Express + better-sqlite3
+
+## Build Commands
+
+```
+npm run dev        # Start dev server
+npm run build      # Production build
+npm test           # Run tests in watch mode
+npm run test:run   # Run tests once
+```
+
+## Quick Start
+
+```
+1. Read prompts/00-prerequisites.md — ensure tools are installed
+2. Read prompts/01-getting-started.md — walk through the questions
+3. Read the relevant prompts based on their answers
+4. Build, test, deploy
+```
+</file>
+
+<file path="CLAUDE.md">
+# WebStarter Kit
+
+A guided foundation for building websites. This file is for Claude Code. For other AI agents, see [AGENTS.md](AGENTS.md).
+
+## Your Role
+
+You are helping a beginner build a website. They may not know technical terms.
+Explain everything simply. Ask before making big decisions.
+
+## Workflow
+
+1. Read `prompts/00-prerequisites.md` — ensure Node.js and editor are installed (Git is optional)
+2. Read `prompts/01-getting-started.md` and follow it
+3. Based on the user's answers, read relevant prompts in order
+4. Copy `template/` contents into the current folder (don't create a subfolder)
+5. Customize based on what they want to build
+6. Set up tests, security, and hosting
+
+## Prompt Files
+
+| File | Purpose |
+|------|---------|
+| `prompts/00-prerequisites.md` | Check/install Node.js, editor; Git is optional |
+| `prompts/01-getting-started.md` | Main workflow: idea to working project |
+| `prompts/02-framework-choice.md` | Vanilla vs React vs Vue vs Astro |
+| `prompts/03-project-structure.md` | How to organize files |
+| `prompts/04-testing.md` | Vitest setup and writing tests |
+| `prompts/05-security.md` | Security essentials checklist |
+| `prompts/06-design.md` | Tailwind CSS + make-it-look-good design guidance |
+| `prompts/07-hosting-static.md` | Deploy to GitHub Pages |
+| `prompts/08-hosting-server.md` | Deploy Express + SQLite to Railway |
+| `prompts/09-react-upgrade.md` | Upgrade vanilla to React |
+| `prompts/10-cicd.md` | GitHub Actions CI/CD |
+| `prompts/11-readme-template.md` | README template for the generated project |
+
+## Rules
+
+- **Ask first.** Always ask before making big decisions (framework, hosting, database, etc.)
+- **Explain simply.** Say what you are doing and why, in plain language.
+- **Test after changes.** Run `npm test` after making changes to make sure nothing breaks.
+- **No secrets in code.** Follow `prompts/05-security.md` — use environment variables, never commit secrets.
+- **Design reference.** Use make-it-look-good for design guidance:
+  https://raw.githubusercontent.com/jdeworks/make-it-look-good/main/CONSULT.md
+
+## Quick Start
+
+```
+# The user tells you their idea, then:
+1. Read prompts/00-prerequisites.md — ensure tools are installed
+2. Read prompts/01-getting-started.md — walk through the questions
+3. Read the relevant prompts based on their answers
+4. Build, test, deploy
+```
+</file>
+
+<file path="README.md">
+## Using this repo with AI assistants
+
+This repo is designed to work with AI tools whether you are in an online chat or using a local agent.
+
+**If you are using an online chatbox** (Claude.ai, ChatGPT, Gemini, Perplexity, etc.):
+
+Fetch the pre-built context bundle directly — no GitHub API calls, no rate limits:
+```xml
+https://raw.githubusercontent.com/jdeworks/make-a-website/dev/bundle.xml
+```
+
+Paste that URL in your chat and say: *"Use this as the full context for make-a-website. I want to [your goal]."*
+
+**If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
+
+Clone the repo so your agent has the full file structure to work with:
+```bash
+git clone -b dev https://github.com/jdeworks/make-a-website.git
+```
+
+Then point your agent at the cloned folder and work directly with the files.
+
+---
+
+# WebStarter Kit
+
+An AI-agent-readable knowledge base that guides complete beginners from "I have an idea" to a deployed, tested, secure website.
+
+## For AI Agents
+
+If you are an AI agent, start here:
+
+1. Read [`CLAUDE.md`](CLAUDE.md) (Claude Code) or [`AGENTS.md`](AGENTS.md) (all other agents)
+2. Follow [`prompts/01-getting-started.md`](prompts/01-getting-started.md) — it walks you through the full flow
+3. Read additional prompts on-demand based on what the user needs
+
+Entry points for specific tools:
+- **Claude Code** — `CLAUDE.md` (auto-loaded)
+- **Cursor** — `.cursor/rules/webstarter-kit.mdc` (auto-loaded)
+- **GitHub Copilot** — `.github/copilot-instructions.md` (auto-loaded)
+- **Windsurf** — `.windsurf/rules/webstarter-kit.md` (auto-loaded)
+- **ChatGPT / other** — read `AGENTS.md` directly
+
+## For Humans
+
+Copy-paste one of these prompts to your AI agent and you're off:
+
+**Claude Code:**
+```
+I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+```
+
+**Cursor / ChatGPT / other:**
+```
+I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.
+```
+
+That's it. The agent will ask you what you want to build and handle the rest.
+
+**Want to browse the guides yourself?** Check out the [handbook](docs/).
+
+## What You Get
+
+- A working website foundation with `npm run dev`
+- Pre-configured tests (Vitest) that pass out of the box
+- Security basics (env vars, .gitignore, input validation guidance)
+- Deployment ready (GitHub Pages or Railway)
+- Professional README auto-generated for your project
+- Design guidance via [make-it-look-good](https://github.com/jdeworks/make-it-look-good)
+
+## Tech Stack
+
+- Vanilla HTML/CSS/JS (with React upgrade path)
+- Tailwind CSS v4
+- Vite
+- Vitest
+- Express + better-sqlite3 (server path)
+
+## Project Structure
+
+```
+make-a-website/
+  CLAUDE.md              # Claude Code entry point
+  AGENTS.md              # Universal agent entry point
+  .cursor/rules/         # Cursor entry point
+  .github/               # Copilot entry point
+  .windsurf/rules/       # Windsurf entry point
+  prompts/               # AI-readable guidance (12 files)
+  template/              # Copyable starter project
+  docs/                  # Human-readable handbook
+  bundle.xml             # Repomix bundle for online AI chat
+  repomix.config.json    # Repomix configuration
+```
+
+## Prompts
+
+| File | Description |
+|------|-------------|
+| [00-prerequisites.md](prompts/00-prerequisites.md) | Check/install Node.js, editor; Git is optional |
+| [01-getting-started.md](prompts/01-getting-started.md) | Main workflow: idea to working project |
+| [02-framework-choice.md](prompts/02-framework-choice.md) | Vanilla vs React vs Vue vs Astro |
+| [03-project-structure.md](prompts/03-project-structure.md) | How to organize files |
+| [04-testing.md](prompts/04-testing.md) | Vitest setup and writing tests |
+| [05-security.md](prompts/05-security.md) | Security essentials checklist |
+| [06-design.md](prompts/06-design.md) | Tailwind CSS + make-it-look-good design guidance |
+| [07-hosting-static.md](prompts/07-hosting-static.md) | Deploy to GitHub Pages |
+| [08-hosting-server.md](prompts/08-hosting-server.md) | Deploy Express + SQLite to Railway |
+| [09-react-upgrade.md](prompts/09-react-upgrade.md) | Upgrade vanilla to React |
+| [10-cicd.md](prompts/10-cicd.md) | GitHub Actions CI/CD |
+| [11-readme-template.md](prompts/11-readme-template.md) | README template for generated projects |
+
+## Contributing
+
+Issues and PRs welcome.
+
+## License
+
+[MIT](LICENSE)
+</file>
+
+</files>

@@ -1,3 +1,27 @@
+## Using this repo with AI assistants
+
+This repo is designed to work with AI tools whether you are in an online chat or using a local agent.
+
+**If you are using an online chatbox** (Claude.ai, ChatGPT, Gemini, Perplexity, etc.):
+
+Fetch the pre-built context bundle directly — no GitHub API calls, no rate limits:
+```xml
+https://raw.githubusercontent.com/jdeworks/make-a-website/dev/bundle.xml
+```
+
+Paste that URL in your chat and say: *"Use this as the full context for make-a-website. I want to [your goal]."*
+
+**If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
+
+Clone the repo so your agent has the full file structure to work with:
+```bash
+git clone -b dev https://github.com/jdeworks/make-a-website.git
+```
+
+Then point your agent at the cloned folder and work directly with the files.
+
+---
+
 # WebStarter Kit
 
 An AI-agent-readable knowledge base that guides complete beginners from "I have an idea" to a deployed, tested, secure website.
@@ -64,13 +88,15 @@ make-a-website/
   prompts/               # AI-readable guidance (12 files)
   template/              # Copyable starter project
   docs/                  # Human-readable handbook
+  bundle.xml             # Repomix bundle for online AI chat
+  repomix.config.json    # Repomix configuration
 ```
 
 ## Prompts
 
 | File | Description |
 |------|-------------|
-| [00-prerequisites.md](prompts/00-prerequisites.md) | Check/install Node.js, Git, editor |
+| [00-prerequisites.md](prompts/00-prerequisites.md) | Check/install Node.js, editor; Git is optional |
 | [01-getting-started.md](prompts/01-getting-started.md) | Main workflow: idea to working project |
 | [02-framework-choice.md](prompts/02-framework-choice.md) | Vanilla vs React vs Vue vs Astro |
 | [03-project-structure.md](prompts/03-project-structure.md) | How to organize files |
