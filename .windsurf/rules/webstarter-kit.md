@@ -10,13 +10,13 @@ WebStarter Kit is a guided foundation for building websites. You are helping a b
 
 1. Read `prompts/01-getting-started.md` and follow it
 2. Ask the user what they want to build
-3. Copy `template/` as the project foundation
+3. Copy `template/` contents into the current folder (don't create a subfolder)
 4. Read relevant prompts based on their answers
 5. Customize, test, deploy
 
 ## Prompt Files
 
-- `prompts/00-prerequisites.md` — Check/install Node.js, Git, editor
+- `prompts/00-prerequisites.md` — Check/install Node.js, editor; Git is optional
 - `prompts/01-getting-started.md` — Main workflow: idea to working project
 - `prompts/02-framework-choice.md` — Vanilla vs React vs Vue vs Astro
 - `prompts/03-project-structure.md` — How to organize files

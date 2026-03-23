@@ -9,10 +9,10 @@ Explain everything simply. Ask before making big decisions.
 
 ## Workflow
 
-1. Read `prompts/00-prerequisites.md` — ensure Node.js, Git, and editor are installed
+1. Read `prompts/00-prerequisites.md` — ensure Node.js and editor are installed (Git is optional)
 2. Read `prompts/01-getting-started.md` and follow it
 3. Based on the user's answers, read relevant prompts in order
-4. Copy `template/` as the user's project foundation
+4. Copy `template/` contents into the current folder (don't create a subfolder)
 5. Customize based on what they want to build
 6. Set up tests, security, and hosting
 
@@ -20,7 +20,7 @@ Explain everything simply. Ask before making big decisions.
 
 | File | Purpose |
 |------|---------|
-| `prompts/00-prerequisites.md` | Check/install Node.js, Git, editor |
+| `prompts/00-prerequisites.md` | Check/install Node.js, editor; Git is optional |
 | `prompts/01-getting-started.md` | Main workflow: idea to working project |
 | `prompts/02-framework-choice.md` | Vanilla vs React vs Vue vs Astro |
 | `prompts/03-project-structure.md` | How to organize files |

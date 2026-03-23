@@ -28,7 +28,7 @@ I want to build a website. Use https://github.com/jdeworks/make-a-website to get
 
 **Cursor / ChatGPT / other:**
 ```
-I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/main/AGENTS.md and guide me through it.
+I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.
 ```
 
 That's it. The agent will ask you what you want to build and handle the rest.

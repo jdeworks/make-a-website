@@ -12,13 +12,13 @@ Explain everything simply. Ask before making big decisions.
 
 1. Read `prompts/01-getting-started.md` and follow it
 2. Based on answers, read relevant prompts in order
-3. Copy `template/` as the project foundation
+3. Copy `template/` contents into the current folder (don't create a subfolder)
 4. Customize based on what they want to build
 5. Set up tests, security, and hosting
 
 ## Prompt Files
 
-- `prompts/00-prerequisites.md` — Check/install Node.js, Git, editor
+- `prompts/00-prerequisites.md` — Check/install Node.js, editor; Git is optional
 - `prompts/01-getting-started.md` — Main workflow: idea to working project
 - `prompts/02-framework-choice.md` — Vanilla vs React vs Vue vs Astro
 - `prompts/03-project-structure.md` — How to organize files

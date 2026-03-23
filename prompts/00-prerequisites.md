@@ -2,19 +2,54 @@
 
 Check and install everything needed before starting. Walk the user through each item.
 
+**Important:** At every step, remind the user: "If anything is confusing, just ask — there are no silly questions. I'm here to help!"
+
+## Experience Check
+
+Before diving in, ask the user:
+> "Before we start, how comfortable are you with coding and tools like the terminal? Pick whichever fits best:
+>
+> **A) Total beginner** — I've never coded before or barely touched it
+> **B) Some experience** — I've done a bit of coding or used the terminal before
+> **C) Comfortable** — I know my way around code and the command line"
+
+- If they pick **A**, use the "Total Novice" recommendations throughout (marked with 🟢 below)
+- If they pick **B** or **C**, give them more options and let them choose
+- If they don't respond or seem unsure, assume **A**
+
 ## Node.js 20 LTS
 
-1. Ask the user to run: `node -v`
+**What is it?** Node.js lets you run JavaScript outside a browser. You need it to build modern websites.
+
+1. Ask the user to open their terminal and run: `node -v`
 2. If output starts with `v20` or higher — they're good
-3. If command not found or version too old — install from https://nodejs.org/ (pick the LTS version)
+3. If command not found or version too old — install from https://nodejs.org/ (pick the LTS version, the big green button)
 4. After install, have them close and reopen their terminal, then run `node -v` again
+
+🟢 **Total novice tip:** "A terminal is the black window where you type commands. On Windows, search for 'PowerShell'. On Mac, search for 'Terminal'."
 
 ## npm
 
 - Comes bundled with Node.js. Verify with: `npm -v`
 - Should show version 10+. If missing, reinstalling Node.js fixes it.
 
-## Git
+## Code Editor
+
+- **Recommended:** VS Code (https://code.visualstudio.com/) or Cursor (https://cursor.com/)
+- Either works. Cursor has built-in AI features.
+- Suggest installing the Tailwind CSS IntelliSense extension
+
+🟢 **Total novice recommendation:** "Use VS Code — it's free, popular, and has great beginner tutorials built in."
+
+## Git (Optional — you can skip this)
+
+Git is a tool that saves snapshots of your code so you can undo mistakes and share your work. It's like "save points" in a video game. **You don't need it to build your website**, but it's very useful later when you want to publish it online.
+
+> Ask the user: "Would you like to set up Git now, or skip it and focus on building first? You can always add it later."
+
+If they want to skip Git, that's fine! Jump to the Verification Checklist and skip the Git items. Mark in `project-config.md` that `git: no`.
+
+### If they want Git:
 
 1. Ask the user to run: `git --version`
 2. If output shows `git version 2.x` — they're good
@@ -25,17 +60,50 @@ Check and install everything needed before starting. Walk the user through each 
    git config --global user.email "your@email.com"
    ```
 
-## Code Editor
+### Why GitHub? (explain simply)
 
-- **Recommended:** VS Code (https://code.visualstudio.com/) or Cursor (https://cursor.com/)
-- Either works. Cursor has built-in AI features.
-- Suggest installing the Tailwind CSS IntelliSense extension
+GitHub is a free website where you can:
+- **Back up your code** — if your computer breaks, your code is safe
+- **Share your work** — show your website to others or collaborate
+- **Publish your website** — GitHub can host your site for free (GitHub Pages)
 
-## GitHub Account
+Think of it like Google Drive, but specifically made for code.
 
-- If the user doesn't have one: sign up at https://github.com/
-- They'll need this for hosting (GitHub Pages) and CI/CD
-- Suggest setting up SSH keys or using GitHub CLI (`gh auth login`)
+### Setting up GitHub (simplest path)
+
+If the user wants GitHub:
+
+1. Sign up at https://github.com/ (if they don't have an account)
+2. Create a Personal Access Token:
+   - Go to https://github.com/settings/tokens
+   - Click "Generate new token" → "Generate new token (classic)"
+   - Give it a name (e.g. "my website project")
+   - Select scopes: `repo` (full control of repositories)
+   - Click "Generate token" and **copy it immediately** (you won't see it again)
+3. Add the token to your environment. Create or edit the `.env` file in your project:
+   ```bash
+   GH_TOKEN=ghp_your_token_here
+   ```
+   The GitHub CLI (`gh`) and Git will automatically pick this up.
+
+4. **Test that it works:**
+   ```bash
+   gh auth status
+   ```
+   If it shows your username, you're good!
+
+🟢 **Total novice note:** "A token is like a password that lets your computer talk to GitHub. We save it in a `.env` file which stays private — it's never uploaded or shared."
+
+**Why `.env`?** If you're working in a container or sandbox that gets reset, your login would be lost each time. By keeping the token in `.env` (which can live on a persistent volume), you stay logged in across restarts.
+
+### .gitignore — keeping junk out of Git
+
+When you use Git, there's a file called `.gitignore` that tells Git which files to ignore. The template already has one set up for you. It ignores things like:
+- `node_modules/` — a folder with thousands of helper files that can be re-downloaded (run `npm install` to get them back)
+- `.env` — files with passwords and secrets that should stay private
+- `dist/` — files generated by the build process
+
+You don't need to do anything — this is already configured. Just know it's there!
 
 ## Verification Checklist
 
@@ -44,7 +112,11 @@ Run these commands and confirm output:
 ```bash
 node -v    # Should print v20.x.x or higher
 npm -v     # Should print 10.x.x+
+```
+
+If using Git:
+```bash
 git --version     # Should print git version 2.x.x
 ```
 
-If all three work, the user is ready. Proceed to `prompts/01-getting-started.md`.
+If all checks pass, the user is ready. Proceed to `prompts/01-getting-started.md`.

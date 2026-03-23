@@ -8,10 +8,10 @@ You are helping a beginner build a website. They may not know technical terms. E
 
 ## Workflow
 
-1. Read `prompts/00-prerequisites.md` — ensure Node.js, Git, and editor are installed
+1. Read `prompts/00-prerequisites.md` — ensure Node.js and editor are installed (Git is optional)
 2. Read `prompts/01-getting-started.md` and follow it
 3. Ask the user what they want to build
-4. Copy `template/` as the user's project foundation
+4. Copy `template/` contents into the current folder (don't create a subfolder)
 5. Read relevant prompts based on their answers (see table below)
 6. Customize the project, test it, and deploy it
 
@@ -19,7 +19,7 @@ You are helping a beginner build a website. They may not know technical terms. E
 
 | File | Purpose |
 |------|---------|
-| `prompts/00-prerequisites.md` | Check/install Node.js, Git, editor |
+| `prompts/00-prerequisites.md` | Check/install Node.js, editor; Git is optional |
 | `prompts/01-getting-started.md` | Main workflow: idea to working project |
 | `prompts/02-framework-choice.md` | Vanilla vs React vs Vue vs Astro |
 | `prompts/03-project-structure.md` | How to organize files |
