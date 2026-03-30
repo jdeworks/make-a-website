@@ -1,5 +1,8 @@
 # WebStarter Kit
 
+> **This project has been superseded by [project-starter-kit](https://github.com/jdeworks/project-starter-kit).**
+> project-starter-kit is a broader, more structured foundation for AI-assisted software projects — not just websites. All new development happens there. This repo will be archived once project-starter-kit is public.
+
 An AI-guided foundation that takes complete beginners from "I have an idea" to a deployed, tested, secure website.
 
 ## Get Started

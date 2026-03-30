@@ -1150,33 +1150,6 @@ SOFTWARE.
 }
 </file>
 
-<file path=".cursor/rules/webstarter-kit.mdc">
----
-description: "WebStarter Kit entry point — guides beginners through building a website from idea to deployment"
-alwaysApply: true
----
-
-# WebStarter Kit
-
-Read `AGENTS.md` and follow the instructions there.
-</file>
-
-<file path=".github/copilot-instructions.md">
-# WebStarter Kit
-
-Read [AGENTS.md](../AGENTS.md) and follow the instructions there.
-</file>
-
-<file path=".windsurf/rules/webstarter-kit.md">
----
-trigger: always
----
-
-# WebStarter Kit
-
-Read `AGENTS.md` and follow the instructions there.
-</file>
-
 <file path="prompts/04-testing.md">
 # Testing
 
@@ -1367,6 +1340,33 @@ Static sites can't process forms server-side. Use one of these:
 
 # Example: Database path (for server path)
 # DB_PATH=./data/app.db
+</file>
+
+<file path=".cursor/rules/webstarter-kit.mdc">
+---
+description: "WebStarter Kit entry point — guides beginners through building a website from idea to deployment"
+alwaysApply: true
+---
+
+# WebStarter Kit
+
+Read `AGENTS.md` and follow the instructions there.
+</file>
+
+<file path=".github/copilot-instructions.md">
+# WebStarter Kit
+
+Read [AGENTS.md](../AGENTS.md) and follow the instructions there.
+</file>
+
+<file path=".windsurf/rules/webstarter-kit.md">
+---
+trigger: always
+---
+
+# WebStarter Kit
+
+Read `AGENTS.md` and follow the instructions there.
 </file>
 
 <file path="prompts/00-prerequisites.md">
@@ -1712,6 +1712,9 @@ Read [AGENTS.md](AGENTS.md) and follow the instructions there.
 
 <file path="README.md">
 # WebStarter Kit
+
+> **This project has been superseded by [project-starter-kit](https://github.com/jdeworks/project-starter-kit).**
+> project-starter-kit is a broader, more structured foundation for AI-assisted software projects — not just websites. All new development happens there. This repo will be archived once project-starter-kit is public.
 
 An AI-guided foundation that takes complete beginners from "I have an idea" to a deployed, tested, secure website.
 
